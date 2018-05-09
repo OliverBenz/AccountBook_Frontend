@@ -21,3 +21,7 @@ body *{
   white-space: nowrap;
   text-overflow: ellipsis; /* Adds the ... */
 }
+
+.error{
+  color: red;
+}

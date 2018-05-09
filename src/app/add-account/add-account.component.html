@@ -6,25 +6,28 @@
   <div class="w3-container w3-teal">
     <h2 class="title">{{ page.title }}</h2>
   </div>
-
+  <!-- TODO: Hide and show error messages for invalid input -->
+  <!-- TODO: Error message in same line as title -->
   <form class="w3-container w3-padding">
-    <label class="w3-text-teal"><b>E-Mail</b></label>
-    <input #email class="w3-input w3-border w3-light-grey" type="text">
+    <label class="w3-text-teal"><b>{{ page.email.title }}</b></label>
+    <input #email class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(email.value, password.value, other.value)" type="text">
+    <!-- <span class="error">{{ page.email.error }}</span> -->
     <br>
 
-    <label class="w3-text-teal"><b>Password</b></label>
-    <input #password class="w3-input w3-border w3-light-grey" type="text">
+    <label class="w3-text-teal"><b>{{ page.password.title }}</b></label>
+    <input #password class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(email.value, password.value, other.value)" type="text">
+    <!-- <span class="error">{{ page.password.error }}</span> -->
     <br>
 
-    <label class="w3-text-teal"><b>Other</b></label>
-    <input #other class="w3-input w3-border w3-light-grey" type="text">
+    <label class="w3-text-teal"><b>{{ page.other.title }}</b></label>
+    <input #other class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(email.value, password.value, other.value)" type="text">
     <br>
 
     <button type="button" class="w3-btn w3-blue-grey" (click)="SendAccount(email.value, password.value, other.value)">Send</button>
     <!-- test -->
-    <p>{{page.email}}</p>
-    <p>{{page.password}}</p>
-    <p>{{page.other}}</p>
+    <p>{{ page.email.value }}</p>
+    <p>{{ page.password.value }}</p>
+    <p>{{ page.other.value }}</p>
   </form>
 </div>
 

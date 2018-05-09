@@ -8,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class AddAccountComponent implements OnInit {
   page = {
     title: 'Add Account',
-    email: '',
-    password: '',
-    other: ''
+    email: {
+      title: 'E-Mail *',
+      value: '',
+      error: 'A valid email is required'
+    },
+    password: {
+      title: 'Password *',
+      value: '',
+      error: 'Please enter a password'
+    },
+    other: {
+      title: 'Other *',
+      value: ''
+    }
   }
   constructor() { }
 
@@ -19,10 +30,11 @@ export class AddAccountComponent implements OnInit {
 
   // TODO: Push data to database
   SendAccount(email: string, password: string, other: string){
-    this.page.email = email;
-    // TODO: hash password
-    this.page.password = password;
-    this.page.other = other;
+    // hash password
+    if(email != '' && password != '' && other != '' ){
+      this.page.email.value = email;
+      this.page.password.value = password;
+      this.page.other.value = other;
+    }
   }
-
 }
