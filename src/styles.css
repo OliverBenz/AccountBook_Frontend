@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --main-grey: #EEEFEF;
+    --dark-grey: #C3C3C3;
+    --darker-grey: #999898;
+    --gold-pink: #F5C500;
+}
+body{
+  background-color: var(--main-grey);
+
+}
+body *{
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Fix code to properly function throughout every component */
+.title{
+  text-align: center;
+
+  /* DIV overflow fix */
+  overflow :hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* Adds the ... */
+}
