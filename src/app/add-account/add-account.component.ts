@@ -30,7 +30,6 @@ export class AddAccountComponent implements OnInit {
 
   // TODO: Push data to database
   SendAccount(email: string, password: string, other: string){
-    // hash password
     if(email != '' && password != '' && other != '' ){
       this.page.email.value = email;
       this.page.password.value = password;
