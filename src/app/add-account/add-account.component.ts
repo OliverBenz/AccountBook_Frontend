@@ -8,29 +8,58 @@ import { Component, OnInit } from '@angular/core';
 export class AddAccountComponent implements OnInit {
   page = {
     title: 'Add Account',
+
     email: {
       title: 'E-Mail *',
       value: '',
-      error: 'A valid email is required'
+      error:{
+        message: 'A valid email is required',
+        hidden: true
+      }
     },
     password: {
       title: 'Password *',
       value: '',
-      error: 'Please enter a password'
+      error: {
+        message: 'Please enter a password',
+        hidden: true
+      }
     },
     other: {
-      title: 'Other *',
+      title: 'Other',
       value: ''
-    }
+    },
+    date: ''
   }
-  constructor() { }
+  constructor() {
+    // this.page.email.error.hidden = true;
+    // this.page.password.error.hidden = true
+  }
 
   ngOnInit() {
   }
 
   // TODO: Push data to database
+  // Send data to database by input over "Enter" or Button klick
   SendAccount(email: string, password: string, other: string){
-    if(email != '' && password != '' && other != '' ){
+    // Check if empty
+    if(email == ''){
+      this.page.email.error.hidden = false;
+    }
+    if(password == ''){
+      this.page.password.error.hidden = false;
+    }
+
+    // Check if filled out again
+    if(email != ''){
+      this.page.email.error.hidden = true;
+    }
+    if(password != ''){
+      this.page.password.error.hidden = true;
+    }
+
+    // OK - ready for push
+    if(email != '' && password != ''){
       this.page.email.value = email;
       this.page.password.value = password;
       this.page.other.value = other;
