@@ -17,22 +17,22 @@ export class MainComponent implements OnInit {
   accounts = [
     {
       id: '1',
-      site: '1. Testsite',
+      site: 'twitter.com',
       date: '8.5.2018',
-      username: '1. Testname ',
-      password: '1. Password',
-      other: '1. Other',
-      likes: 10,
+      username: 'PaciusTheGreat',
+      password: 'minecraftForLife1',
+      other: "Pls don't hack me, I like this account",
+      likes: 100,
       dislikes: 10,
       rating: 0
     },
     {
       id: '2',
-      site: '2. Testsite',
+      site: 'twitch.com',
       date: '8.5.2018',
-      username: '2. Testname',
-      password: '2. password',
-      other: '2. other',
+      username: 'Pacius',
+      password: 'minecraftForEternity123',
+      other: "I also really like this account, please don't hack",
       likes: 100,
       dislikes: 2,
       rating: 0
