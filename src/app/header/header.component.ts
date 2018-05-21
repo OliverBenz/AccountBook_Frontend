@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   page = {
-    title: 'AccountBook'
+    title: 'AccountBook',
+    filter: ''
   }
-  constructor() { }
+
+  constructor(
+    // public filterService: FilterService
+  ) { }
 
   ngOnInit() {
+  }
+
+  SendFilter(data){
+    // this.filterService.sendFilter(data);
+    this.page.filter = data;
   }
 
 }

@@ -9,7 +9,7 @@ export class IndexComponent implements OnInit {
   page = {
     welcome:  {
       title: 'Welcome to AccountBook',
-      content: 'AccountBook is a account sharing website. Just search for the game or website you need an account for and if someone already provided their account you can log in using their info.'
+      content: 'AccountBook is a account sharing website. Just search for the game or website you need an account for and if someone already provided their informatin you can just use it on free will'
     },
     how: {
       title: 'How it works',
@@ -17,11 +17,11 @@ export class IndexComponent implements OnInit {
     },
     remove: {
       title: 'Removing an Account',
-      content: 'It is not possible to remove an account, so be careful to what informamtion you provide'
+      content: 'It is not possible to remove an account so be careful to what information you provide'
     },
     twitter: {
       title: 'Twitter',
-      content: 'If you spot bugs/problems on the site, report them to out twitter account.'
+      content: 'If you spot bugs/problems on the site, please report them to out twitter account.'
     }
   }
   constructor() { }
