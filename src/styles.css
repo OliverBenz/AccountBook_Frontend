@@ -26,3 +26,11 @@ body *{
   color: red;
   margin-left: 15px;
 }
+
+/* background color */
+.dark-grey{
+  background-color: var(--dark-grey);
+}
+.darker-grey{
+  background-color: var(--darker-grey);
+}

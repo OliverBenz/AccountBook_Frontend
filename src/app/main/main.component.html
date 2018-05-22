@@ -5,16 +5,13 @@
 
 <!-- TODO: Design overhaul -->
 <!-- Design code now in component.ts -->
+<!-- Certain hight for container, can't individually grow bigger, if too much text -> ellipses -->
 
-<!-- <div class="w3-col s6 m3 l2 ">
+<div class="w3-col s6 m3 l2 ">
   <div class="w3-margin w3-card w3-hover-shadow">
-    <div class="w3-container w3-header w3-blue">
-      <div class="">
-        <h2 class="title">{{ accounts[0].site }}</h2>
-      </div>
-      <div class="" style="text-align: right; margin-right: 5px;">
-        <p>8.5.2018</p>
-      </div>
+    <div class="w3-container w3-header darker-grey">
+      <h2 class="title">{{ accounts[0].site }}</h2>
+      <p id="date">8.5.2018</p>
     </div>
     <div class="userInfo w3-container">
       <p><b>Username</b></p>
@@ -25,7 +22,8 @@
       <p>{{ accounts[0].other }}</p>
     </div>
     <div class="w3-container w3-footer">
-      <h4><b>Rating: </b>{{ accounts[0].rating }} %</h4>
+      <br>
+      <h5><b>Rating: </b>{{ accounts[0].rating }} %</h5>
     </div>
   </div>
-</div> -->
+</div>

@@ -3,7 +3,7 @@
 
 <div class="w3-container w3-col s8 m8 l8">
     <br>
-  <div class="w3-container w3-teal">
+  <div class="w3-container darker-grey">
     <h2 class="title">{{ page.title }}</h2>
   </div>
   <!-- TODO: Hide and show error messages for invalid input -->
@@ -23,7 +23,7 @@
     <input #other class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(email.value, password.value, other.value)" type="text">
     <br>
 
-    <button type="button" class="w3-btn w3-blue-grey" (click)="SendAccount(email.value, password.value, other.value)">Send</button>
+    <button type="button" class="w3-btn darker-grey" (click)="SendAccount(email.value, password.value, other.value)">Send</button>
     <!-- test -->
     <p>{{ page.email.value }}</p>
     <p>{{ page.password.value }}</p>
