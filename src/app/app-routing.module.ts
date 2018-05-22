@@ -5,7 +5,6 @@ import { IndexComponent } from './index/index.component';
 import { AddAccountComponent } from './add-account/add-account.component'
 
 const routes: Routes = [
-  // TODO: Better fix for main page than path: ''
   { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'main', component: MainComponent },

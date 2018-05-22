@@ -17,9 +17,15 @@ body *{
   text-align: center;
 
   /* DIV overflow fix */
-  overflow :hidden;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; /* Adds the ... */
+}
+
+.overflow{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .error{
@@ -33,4 +39,22 @@ body *{
 }
 .darker-grey{
   background-color: var(--darker-grey);
+}
+
+/* AccountList */
+.userInfo {
+  line-height: 15px;
+}
+.containerhight{
+  height: 450px;
+  position: relative;
+}
+#rating{
+  position: absolute;
+  bottom: 0;
+  vertical-align: bottom;
+}
+#date{
+  text-align: right;
+  margin-right: 5px;
 }

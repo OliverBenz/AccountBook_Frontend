@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
+import { SafeHTMLPipe } from './safe-html.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeaderComponent } from './header/header.component';
     MainComponent,
     AddAccountComponent,
     IndexComponent,
-    HeaderComponent
+    HeaderComponent,
+    SafeHTMLPipe
   ],
   imports: [
     BrowserModule,
