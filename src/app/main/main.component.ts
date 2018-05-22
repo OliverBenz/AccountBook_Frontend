@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   page = {
     rating: 'Rating: ' + '90%',
-    output: ''
+    output: '',
+    filter:''
   }
   // TODO: Database layout check, Table for every site or every site in same table
   // TODO: Get data from database and format output
@@ -36,7 +38,9 @@ export class MainComponent implements OnInit {
       rating: 0
     }
   ]
-  constructor() { }
+  constructor(
+    // private filterService: FilterService
+  ) { }
   ngOnInit() {
     // Calculate percentage rating for every object
     for (let i in this.accounts){
@@ -46,6 +50,10 @@ export class MainComponent implements OnInit {
 
     //Generate HTML output from accounts array
     this.page.output = this.loadAccounts(this.accounts);
+
+    // this.filterService.filterSubject.subscribe(
+    //   data => console.log(data)
+    // )
   }
 
   loadAccounts(accounts){
