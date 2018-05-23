@@ -1,7 +1,11 @@
 .userInfo {
+<<<<<<< HEAD
   line-height: 10px;
 }
 #date{
   text-align: right;
   margin-right: 5px;
+=======
+  line-height: 15px;
+>>>>>>> 2c9a9ec776e23c1c79e7b04d2b046fb340a70893
 }

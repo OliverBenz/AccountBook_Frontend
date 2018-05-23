@@ -1,29 +1,5 @@
-
 <!-- Get output HTML from component.ts -->
-<div [innerHTML] = "page.output"></div>
+<div [innerHTML] = "page.output | safeHTML"></div>
 
-
-<!-- TODO: Design overhaul -->
-<!-- Design code now in component.ts -->
-<!-- Certain hight for container, can't individually grow bigger, if too much text -> ellipses -->
-
-<div class="w3-col s6 m3 l2 ">
-  <div class="w3-margin w3-card w3-hover-shadow">
-    <div class="w3-container w3-header darker-grey">
-      <h2 class="title">{{ accounts[0].site }}</h2>
-      <p id="date">8.5.2018</p>
-    </div>
-    <div class="userInfo w3-container">
-      <p><b>Username</b></p>
-      <p>{{ accounts[0].username }}</p><br>
-      <p><b>Password</b></p>
-      <p>{{ accounts[0].password }}</p><br>
-      <p><b>Other</b></p>
-      <p>{{ accounts[0].other }}</p>
-    </div>
-    <div class="w3-container w3-footer">
-      <br>
-      <h5><b>Rating: </b>{{ accounts[0].rating }} %</h5>
-    </div>
-  </div>
-</div>
+<!-- TODO: add buttons (like/dislike) -->
+<!-- TODO: 'other' should display two lines -->

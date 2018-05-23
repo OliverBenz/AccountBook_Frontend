@@ -12,7 +12,6 @@ export class MainComponent implements OnInit {
     output: '',
     filter:''
   }
-  // TODO: Database layout check, Table for every site or every site in same table
   // TODO: Get data from database and format output
   accounts = [
     {
@@ -28,11 +27,11 @@ export class MainComponent implements OnInit {
     },
     {
       id: '2',
-      site: 'twitch.com',
+      site: 'bugmenot.com',
       date: '8.5.2018',
       username: 'Pacius',
       password: 'minecraftForEternity123',
-      other: "I also really like this account, please don't hack",
+      other: "mmmmmmmmmmmm mmmmmmmm",
       likes: 100,
       dislikes: 2,
       rating: 0
@@ -59,26 +58,22 @@ export class MainComponent implements OnInit {
   loadAccounts(accounts){
     var output = '';
     for (let i in accounts){
-      output += '<div class="w3-col s6 m3 l2 ">' +
-                '<div class="w3-margin w3-card w3-hover-shadow">' +
-                '<div class="w3-container w3-header w3-blue">' +
-                '<div class="">' +
+      output += '<div class="w3-col s6 m4 l2">' +
+                '<div class="w3-margin w3-card w3-hover-shadow containerhight">' +
+                '<div class="w3-container w3-header darker-grey">' +
                 '<h2 class="title">' + accounts[i].site + '</h2>' +
-                '</div>' +
-                '<div id="date" class=""' +
-                '<p>' + accounts[i].date + '</p>' +
-                '</div>' +
+                '<p id="date">' + accounts[i].date + '</p>' +
                 '</div>' +
                 '<div class="userInfo w3-container">' +
                 '<p><b>Username</b></p>' +
-                '<p>' + accounts[i].username + '</p>' +
+                '<p class="overflow">' + accounts[i].username + '</p><br>' +
                 '<p><b>Password</b></p>' +
-                '<p>' + accounts[i].password + '</p>' +
+                '<p class="overflow">' + accounts[i].password + '</p><br>' +
                 '<p><b>Other</b></p>' +
-                '<p>' + accounts[i].other + '</p>' +
+                '<p class="overflow">' + accounts[i].other + '</p>' +
                 '</div>' +
-                '<div class="w3-container w3-footer">' +
-                '<h4><b>Rating: </b>' + accounts[i].rating + '%</h4>' +
+                '<div id="rating" class="w3-container w3-footer">' +
+                '<h5><b>Rating: </b>' + accounts[i].rating + ' %</h5>' +
                 '</div></div></div>';
     }
     return output;
