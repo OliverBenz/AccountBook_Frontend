@@ -8,7 +8,8 @@ import { MainComponent } from './main/main.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
-import { SafeHTMLPipe } from './safe-html.pipe';
+import { SafeHTMLPipe } from './pipes/safe-html.pipe';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SafeHTMLPipe } from './safe-html.pipe';
     AddAccountComponent,
     IndexComponent,
     HeaderComponent,
-    SafeHTMLPipe
+    SafeHTMLPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<div class="w3-col s2 m2 l2"><p></p></div>
+
+
+<div class="w3-container w3-col s8 m8 l8">
+    <br>
+  <div class="w3-container darker-grey">
+    <h2 class="title">{{ page.title }}</h2>
+  </div>
+  <form class="w3-container w3-padding">
+    <label class="w3-text-teal"><b>{{ form.username.title }}</b></label>
+    <span class="error" [hidden]="form.username.error.hidden">{{ form.username.error.message }}</span>
+    <input #username class="w3-input w3-border w3-light-grey" (keyup.enter)="SendLogin(username.value, password.value)" type="text">
+    <br>
+
+    <label class="w3-text-teal"><b>{{ form.password.title }}</b></label>
+    <span class="error" [hidden]="form.password.error.hidden">{{ form.password.error.message }}</span>
+    <input #password class="w3-input w3-border w3-light-grey" (keyup.enter)="SendLogin(username.value, password.value)" type="text">
+    <br>
+
+    <button type="button" class="w3-btn darker-grey" (click)="SendLogin(username.value, password.value)">Login</button>
+
+  </form>
+</div>
+
+
+<div class="w3-col s2 m2 l2"></div>
