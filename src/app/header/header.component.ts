@@ -23,5 +23,4 @@ export class HeaderComponent implements OnInit {
     // this.filterService.sendFilter(data);
     this.page.filter = data;
   }
-
 }

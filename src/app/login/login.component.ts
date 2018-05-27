@@ -7,55 +7,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   page = {
-    title: "Login"
-  };
-
-  form = {
-    username: {
-      title: 'Username',
-      error:{
-        message: 'A valid username is required',
-        hidden: true
+    login: {
+      title: "Login",
+      username: {
+        title: "Username",
+        error:{
+          message: 'A valid username is required',
+          hidden: true
+        }
+      },
+      password: {
+        title: "Password",
+        error:{
+          message: 'A valid password is required',
+          hidden: true
+        }
       }
     },
-    password: {
-      title: 'Password',
-      error:{
-        message: 'A valid password is required',
-        hidden: true
-      }
+    register:{
+      title: "Register",
+      username: "Username *",
+      password: "Password *",
+      email: "E-Mail *",
+      // Security question ?
     }
-  };
+  }
+  LoginData = {
+    username: "",
+    password: ""
+  }
+  RegisterData = {
+    username: "",
+    password: "",
+    email: ""
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  SendLogin(username: string, password: string){
+  Login(username: string, password: string){
     // Check if empty
     if(username == ''){
-      this.form.username.error.hidden = false;
+      this.page.login.username.error.hidden = false;
     }
-    if(password == ''){
-      this.form.password.error.hidden = false;
+    else if(password == ''){
+      this.page.login.password.error.hidden = false;
+    }
+    // OK - Check with account database
+    else{
+      this.LoginData.username = username;
+      this.LoginData.password = password;
     }
 
     // Check if filled out again
     if(username != ''){
-      this.form.username.error.hidden = true;
+      this.page.login.username.error.hidden = true;
     }
     if(password != ''){
-      this.form.password.error.hidden = true;
-    }
-
-    // OK - ready for push
-    if(username != '' && password != ''){
-      // Check if admin
-      if (username == 'admin' && password == 'admin'){
-        // redirect to account.html
-      }
+      this.page.login.password.error.hidden = true;
     }
   }
 
+  Register(){
+
+  }
 }
