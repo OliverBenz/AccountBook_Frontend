@@ -52,13 +52,8 @@ export class LoginComponent implements OnInit {
     if(username == ''){
       this.page.login.username.error.hidden = false;
     }
-    else if(password == ''){
+    if(password == ''){
       this.page.login.password.error.hidden = false;
-    }
-    // OK - Check with account database
-    else{
-      this.LoginData.username = username;
-      this.LoginData.password = password;
     }
 
     // Check if filled out again
@@ -67,6 +62,12 @@ export class LoginComponent implements OnInit {
     }
     if(password != ''){
       this.page.login.password.error.hidden = true;
+    }
+    
+    // OK - Check with account database
+    if(username != '' && password != ''){
+      this.LoginData.username = username;
+      this.LoginData.password = password;
     }
   }
 
