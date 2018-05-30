@@ -1,9 +1,12 @@
-<h1 class="title w3-jumbo">{{ page.title }}</h1>
+<div id="background">
+  <h1 class="title w3-jumbo">{{ page.title }}</h1>
 
-<div class="w3-bar w3-large w3-dark-grey">
-  <a routerLink="/index" class="w3-bar-item w3-button">Main Page</a>
-  <a routerLink="/add" class="w3-bar-item w3-button">Add Account</a>
-  <a routerLink="/main" class="w3-bar-item w3-button">Account List</a>
-  <!-- <a href="https://twitter.com/PaciusTheGreat" class="w3-bar-item w3-button">Twitter</a> -->
-  <input #filter type="text" class="w3-bar-item w3-input w3-dark-grey" placeholder="Search Accounts.." (keyup)="SendFilter(filter.value)">
+  <div class="w3-bar w3-large w3-dark-grey">
+    <a routerLink="/index" class="w3-bar-item w3-button">Main Page</a>
+    <a routerLink="/add" class="w3-bar-item w3-button">Add Account</a>
+    <a routerLink="/main" class="w3-bar-item w3-button">Accountlist</a>
+    <!-- <a routerLink="/login" class="w3-bar-item w3-button">Login</a> -->
+    <!-- <a href="https://twitter.com/PaciusTheGreat" class="w3-bar-item w3-button">Twitter</a> -->
+    <input #filter type="text" class="w3-bar-item w3-input w3-dark-grey" placeholder="Search Accounts.." (keyup.enter)="SendFilter(filter.value)">
+  </div>
 </div>

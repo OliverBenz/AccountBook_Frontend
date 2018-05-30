@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-
-// import { Subject } from 'rxjs/Subject';
-// import 'rxjs/add/operator/map';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
+  private filterSource = new BehaviorSubject<string>("");
+  currentFilter = this.filterSource.asObservable();
 
-  // public filterSubject = new Subject<any>();
   constructor() { }
 
-  // sendFilter(data){
-  //   this.filterSubject.next(data);
-  // }
+  changeFilter(filter: string){
+    this.filterSource.next(filter);
+  }
 }
