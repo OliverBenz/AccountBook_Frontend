@@ -7,6 +7,6 @@
     <a routerLink="/main" class="w3-bar-item w3-button">Accountlist</a>
     <!-- <a routerLink="/login" class="w3-bar-item w3-button">Login</a> -->
     <!-- <a href="https://twitter.com/PaciusTheGreat" class="w3-bar-item w3-button">Twitter</a> -->
-    <input #filter type="text" class="w3-bar-item w3-input w3-dark-grey" placeholder="Search Accounts.." (keyup)="SendFilter(filter.value)">
+    <input #filter type="text" class="w3-bar-item w3-input w3-dark-grey" placeholder="Search Accounts.." (keyup.enter)="SendFilter(filter.value)">
   </div>
 </div>
