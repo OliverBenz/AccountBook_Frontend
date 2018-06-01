@@ -11,6 +11,7 @@ import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { LoginComponent } from './login/login.component';
+import { StartSiteComponent } from './start-site/start-site.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     IndexComponent,
     HeaderComponent,
     SafeHTMLPipe,
-    LoginComponent
+    LoginComponent,
+    StartSiteComponent
   ],
   imports: [
     BrowserModule,

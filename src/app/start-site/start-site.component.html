@@ -1,0 +1,52 @@
+<!-- TODO: w3-col add s/l settings -->
+<div id="background">
+  <!-- Row 1 - Header and Menu -->
+  <div id="header" class="w3-row">
+    <div class="w3-col s6 m6 l6 ">
+      <h1>AccountBook</h1>
+      <br><br>
+    </div>
+    <div class="w3-col s6 m6 l6">
+      <button (click)="gotoStartsite()">Startsite ☰</button>
+    </div>
+  </div>
+
+  <br><br><br><br>
+
+  <!-- Row 2 - Content and icons -->
+  <div class="w3-row">
+    <!-- Spacing to left -->
+    <div class="w3-col s1 m1 l1">
+      <p></p>
+    </div>
+
+    <!-- Introduction -->
+    <div class="w3-col s6 m6 l6">
+      <h5>Welcome to AccountBook</h5>
+
+      <h2>
+        We barely provide any data <br>
+        and are the worlds smallest <br>
+        account sharing website!
+      </h2>
+
+      <br><br>
+
+      <div id="navigation">
+        <button (click)="changeSeachInput()">Search Account</button>
+        <button>Add Account</button><br>
+        <!-- TODO: Span in same line as buttons -->
+        <!-- Input enter:  (keyup.enter)="SendFilter(filter.value) -->
+        <!-- [hidden]="page.searchInput" -->
+        <span [style.visibility]="page.searchInput" ><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>
+      </div>
+    </div>
+
+
+    <div id="navDiv" class="w3-col s5 m5 l5">
+      <p></p>
+      <!-- <p>side icons or something</p> -->
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 50px"></div>

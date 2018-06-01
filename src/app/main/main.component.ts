@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
   accounts = [ ]
   page = {
     rating: 'Rating: ' + '90%',
-    output: '',
+    output: ''
   }
 
   constructor( private accountService: AccountService ) { }
@@ -34,11 +34,11 @@ export class MainComponent implements OnInit {
     }
 
     // Generate output for accounts
-    for (let i=0;i<accounts.length;i++){
+    for (let i=0;i < accounts.length; i++){
         output += '<div class="w3-col s6 m4 l2">' +
                   '<div class="w3-margin w3-card w3-hover-shadow containerhight">' +
                   '<div class="w3-container w3-header darker-grey">' +
-                  '<h2 class="title">' + accounts[i].site + '</h2>' +
+                  '<h2 class="title">' + accounts[i].website + '</h2>' +
                   '<p id="date">' + accounts[i].date + '</p>' +
                   '</div>' +
                   '<div class="userInfo w3-container">' +
@@ -47,7 +47,7 @@ export class MainComponent implements OnInit {
                   '<p><b>Password</b></p>' +
                   '<p class="overflow">' + accounts[i].password + '</p><br>' +
                   '<p><b>Other</b></p>' +
-                  '<p class="overflow">' + accounts[i].other + '</p>' +
+                  '<p class="overflow">' + accounts[i].info + '</p>' +
                   '</div>' +
                   '<div id="rating" class="w3-container w3-footer">' +
                   '<h5><b>Rating: </b>' + accounts[i].rating + ' %</h5>' +

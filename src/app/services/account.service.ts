@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   providedIn: 'root'
 })
 export class AccountService {
-  private accountSource = new BehaviorSubject<string>("");
+  private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
   Accounts = [
@@ -40,20 +40,24 @@ export class AccountService {
   ) {  }
 
   changeFilter(filter: string){
+    console.log(this.Accounts);
+    console.log(filter);
     this.http.get<AccountResponse>('https://api.github.com/users/OliverBenz')
       .subscribe(data => {
         // TODO: Filter data and remove unwanted data if filter was changed
-        this.Accounts.push({
-          id: this.Accounts.length + 1,
-          website: 'data.website',
-          date: 'data.date',
-          username: 'data.username',
-          password: 'data.password',
-          info: 'data.info',
-          likes: 121,
-          dislikes: 435,
-          rating: 0
-        });
+        if(data.website == filter || data.website == "www." + filter){
+          this.Accounts.push({
+            id: this.Accounts.length + 1,
+            website: 'data.website',
+            date: 'data.date',
+            username: 'data.username',
+            password: 'data.password',
+            info: 'data.info',
+            likes: 121,
+            dislikes: 435,
+            rating: 0
+          });
+        }
     })
 
     this.accountSource.next(this.Accounts);

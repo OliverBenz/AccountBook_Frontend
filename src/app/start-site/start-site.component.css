@@ -1,0 +1,62 @@
+/* Background image */
+#background{
+  background-image: url("/assets/images/headerBackground.jpg");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  color: white;
+
+  /* height: 900px; */
+  height: auto;
+  max-height: 100%;
+  padding-bottom: 45px;
+}
+
+/* Header */
+#header{
+  padding-top: 10px;
+}
+#header button{
+  background-color: transparent;
+  font-size: 20px;
+  color: white;
+  border: none;
+  float: right;
+}
+#header h1{
+  color: white;
+  text-align: left;
+
+  padding-left: 20px;
+}
+
+#navigation button {
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+
+  /* Border */
+  border: 1px solid black;
+  border-color: white;
+
+  /* Size */
+  margin-right: 10px;
+  margin-bottom: 5px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#filter{
+  background-color: Transparent;
+  color: white;
+  width: 300px;
+}

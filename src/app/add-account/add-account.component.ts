@@ -9,7 +9,6 @@ export class AddAccountComponent implements OnInit {
   page = {
     title: 'Add Account',
     date: '',
-
     username: {
       title: 'Username *',
       value: '',

@@ -7,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   page = {
-    welcome:  {
-      title: 'Welcome to AccountBook',
-      content: 'AccountBook is a account sharing website. Just search for the game or website you need an account for and if someone already provided their informatin you can just use it on free will'
-    },
     how: {
       title: 'How it works',
       content: 'Anyone can add an account. The user can rate every search result based on if it worked or not. Strongly negative information will be removed.'
