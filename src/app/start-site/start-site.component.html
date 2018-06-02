@@ -7,7 +7,7 @@
       <br><br>
     </div>
     <div class="w3-col s6 m6 l6">
-      <button (click)="gotoStartsite()">Startsite ☰</button>
+      <button class="w3-hover-opacity" (click)="gotoStartsite()">Startsite ☰</button>
     </div>
   </div>
 
@@ -33,9 +33,8 @@
       <br><br>
 
       <div id="navigation">
-        <button (click)="changeSeachInput()">Search Account</button>
-        <button>Add Account</button><br>
-        <!-- TODO: Span in same line as buttons -->
+        <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Account</button>
+        <button class="w3-hover-opacity" (click)="gotoAddsite()">Add Account</button><br>
         <!-- Input enter:  (keyup.enter)="SendFilter(filter.value) -->
         <!-- [hidden]="page.searchInput" -->
         <span [style.visibility]="page.searchInput" ><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>

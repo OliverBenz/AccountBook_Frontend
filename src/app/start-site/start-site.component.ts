@@ -21,11 +21,6 @@ export class StartSiteComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  gotoStartsite(){
-    this.router.navigate(["/index"]);
-  }
-
   changeSeachInput(){
     if(this.page.searchInput == "hidden"){
       this.page.searchInput = "visible";
@@ -38,6 +33,18 @@ export class StartSiteComponent implements OnInit {
   SendFilter(filter){
     // Send Filter and show results
     this.accountService.changeFilter(filter);
+    this.page.searchInput = "hidden";
+    this.gotoAccountssite();
+
+  }
+
+  gotoStartsite(){
+    this.router.navigate(["/index"]);
+  }
+  gotoAddsite(){
+    this.router.navigate(["/add"]);
+  }
+  gotoAccountssite(){
     this.router.navigate(["/main"]);
   }
 

@@ -1,15 +1,9 @@
+/* Define standard color that might be of use later */
 :root {
     --main-grey: #EEEFEF;
     --dark-grey: #C3C3C3;
     --darker-grey: #999898;
     --gold-pink: #F5C500;
-}
-/* Define background color classes */
-.dark-grey{
-  background-color: var(--dark-grey);
-}
-.darker-grey{
-  background-color: var(--darker-grey);
 }
 /* Remove the white space on top of page */
 /* Only works when the topmost element is h1 */
@@ -24,6 +18,20 @@ textarea:focus,
 input:focus {
     outline: none;
 }
+/* Hide the scrollbar on chrome */
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Define background color classes */
+.dark-grey{
+  background-color: var(--dark-grey);
+}
+.darker-grey{
+  background-color: var(--darker-grey);
+}
+
 /* Standard background color should not be white */
 body{
   background-color: var(--main-grey);

@@ -1,32 +1,39 @@
+<!-- Size spacing left -->
 <div class="w3-col s2 m2 l2"><p></p></div>
 
-
 <div class="w3-container w3-col s8 m8 l8">
-    <br>
-  <div class="w3-container darker-grey">
+  <br>
+  <!-- Header -->
+  <div class="w3-container">
     <h2 class="title">{{ page.title }}</h2>
   </div>
-  <!-- TODO: Hide and show error messages for invalid input -->
   <form class="w3-container w3-padding">
-    <label class="w3-text-teal"><b>{{ page.site.title }}</b></label>
-    <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span>
-    <input #site class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
-    <br>
+    <!-- Form column 1 -->
+    <div class="w3-col s6 m6 l6">
+      <label class="w3-text-teal"><b>{{ page.site.title }}</b></label>
+      <!-- <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span> -->
+      <input #site class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.site.error.message}}">
+      <br>
 
-    <label class="w3-text-teal"><b>{{ page.username.title }}</b></label>
-    <span class="error" [hidden]="page.username.error.hidden">{{ page.username.error.message }}</span>
-    <input #username class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
-    <br>
+      <label class="w3-text-teal"><b>{{ page.username.title }}</b></label>
+      <!-- <span class="error" [hidden]="page.username.error.hidden">{{ page.username.error.message }}</span> -->
+      <input #username class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.username.error.message}}">
+      <br>
+    </div>
 
-    <label class="w3-text-teal"><b>{{ page.password.title }}</b></label>
-    <span class="error" [hidden]="page.password.error.hidden">{{ page.password.error.message }}</span>
-    <input #password class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
-    <br>
+    <!-- Form column 2 -->
+    <div class="w3-col s6 m6 l6">
+      <label class="w3-text-teal"><b>{{ page.password.title }}</b></label>
+      <!-- <span class="error" [hidden]="page.password.error.hidden">{{ page.password.error.message }}</span> -->
+      <input #password class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.password.error.message}}">
+      <br>
 
-    <label class="w3-text-teal"><b>{{ page.other.title }}</b></label>
-    <input #other maxlength="30" class="w3-input w3-border w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
-    <br>
+      <label class="w3-text-teal"><b>{{ page.other.title }}</b></label>
+      <input #other maxlength="30" class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
+      <br>
+    </div>
 
+    <!-- Send Button -->
     <button type="button" class="w3-btn darker-grey" (click)="SendAccount(username.value, password.value, other.value, site.value)">Send</button>
     <!-- test -->
     <p>{{ page.site.value }}</p>
