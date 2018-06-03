@@ -27,6 +27,7 @@ export class StartSiteComponent implements OnInit {
     }
     else if(this.page.searchInput == "visible"){
       this.page.searchInput = "hidden";
+
     }
   }
 
@@ -35,7 +36,6 @@ export class StartSiteComponent implements OnInit {
     this.accountService.changeFilter(filter);
     this.page.searchInput = "hidden";
     this.gotoAccountssite();
-
   }
 
   gotoStartsite(){

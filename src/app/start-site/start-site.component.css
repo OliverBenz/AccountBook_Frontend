@@ -12,11 +12,14 @@
   height: auto;
   max-height: 100%;
   padding-bottom: 45px;
+
+  margin-bottom: 50px;
 }
 
 /* Header */
 #header{
   padding-top: 10px;
+  margin-bottom: 80px;
 }
 #header button{
   background-color: transparent;

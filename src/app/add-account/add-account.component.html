@@ -1,7 +1,7 @@
 <!-- Size spacing left -->
 <div class="w3-col s2 m2 l2"><p></p></div>
 
-<div class="w3-container w3-col s8 m8 l8">
+<div class="w3-container w3-col s8 m8 l8 w3-animate-opacity">
   <br>
   <!-- Header -->
   <div class="w3-container">
@@ -10,14 +10,14 @@
   <form class="w3-container w3-padding">
     <!-- Form column 1 -->
     <div class="w3-col s6 m6 l6">
-      <label class="w3-text-teal"><b>{{ page.site.title }}</b></label>
-      <!-- <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span> -->
-      <input #site class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.site.error.message}}">
-      <br>
-
       <label class="w3-text-teal"><b>{{ page.username.title }}</b></label>
       <!-- <span class="error" [hidden]="page.username.error.hidden">{{ page.username.error.message }}</span> -->
       <input #username class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.username.error.message}}">
+      <br>
+
+      <label class="w3-text-teal"><b>{{ page.site.title }}</b></label>
+      <!-- <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span> -->
+      <input #site class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.site.error.message}}">
       <br>
     </div>
 
