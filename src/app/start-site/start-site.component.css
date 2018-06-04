@@ -35,6 +35,9 @@
   padding-left: 20px;
 }
 
+#navigation{
+  margin-top: 40px;
+}
 #navigation button {
   color: white;
   background-color: Transparent;
@@ -57,7 +60,6 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-
 #filter{
   background-color: Transparent;
   color: white;

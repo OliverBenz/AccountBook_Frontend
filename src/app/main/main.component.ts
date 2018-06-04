@@ -29,8 +29,13 @@ export class MainComponent implements OnInit {
 
     // Calculate percentage rating for every object
     for (let i in accounts){
-      var rate = ( 100 / (accounts[i].likes + accounts[i].dislikes)) * accounts[i].likes;
-      accounts[i].rating = Math.round(rate);
+      if(accounts[i].likes == 0 && accounts[i].dislikes == 0){
+        accounts[i].rating = 0;
+      }
+      else{
+        var rate = ( 100 / (accounts[i].likes + accounts[i].dislikes)) * accounts[i].likes;
+        accounts[i].rating = Math.round(rate);
+      }
     }
 
     // Generate output for accounts

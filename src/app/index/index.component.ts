@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit {
     },
     remove: {
       title: 'Removing an Account',
-      content: 'It is not possible to remove an account so be careful to what information you provide'
+      content: 'You done goofed. It is not possible to remove an account so be careful to what information you provide'
     },
     twitter: {
       title: 'Twitter',

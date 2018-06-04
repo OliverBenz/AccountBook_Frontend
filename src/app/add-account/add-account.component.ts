@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-add-account',
@@ -11,7 +12,6 @@ export class AddAccountComponent implements OnInit {
     date: '',
     username: {
       title: 'Username *',
-      value: '',
       error:{
         message: 'A valid username is required',
         hidden: true
@@ -19,7 +19,6 @@ export class AddAccountComponent implements OnInit {
     },
     password: {
       title: 'Password *',
-      value: '',
       error: {
         message: 'Please enter a password',
         hidden: true
@@ -28,18 +27,18 @@ export class AddAccountComponent implements OnInit {
 
     site: {
       title: 'Website *',
-      value: '',
       error: {
         message: 'Please enter a website',
         hidden: true
       }
     },
     other: {
-      title: 'Other',
-      value: ''
+      title: 'Other'
     }
   }
-  constructor() {
+  constructor(
+    private accountService: AccountService
+  ) {
     // this.page.email.error.hidden = true;
     // this.page.password.error.hidden = true
   }
@@ -49,9 +48,10 @@ export class AddAccountComponent implements OnInit {
 
   // TODO: Push data to database
   // Send data to database by input over "Enter" or Button klick
-  SendAccount(username: string, password: string, other: string, site: string){
+  SendAccount(username: string, password: string, info: string, website: string){
+
     // Check if empty
-    if(site == ''){
+    if(website == ''){
       this.page.site.error.hidden = false;
     }
     if(username == ''){
@@ -69,16 +69,20 @@ export class AddAccountComponent implements OnInit {
     if(password != ''){
       this.page.password.error.hidden = true;
     }
-    if(site != ''){
+    if(website != ''){
       this.page.site.error.hidden = true;
     }
 
     // OK - ready for push
-    if(username != '' && password != '' && site != ''){
-      this.page.username.value = username;
-      this.page.password.value = password;
-      this.page.other.value = other;
-      this.page.site.value = site;
+    if(username != '' && password != '' && website != ''){
+      let account = {
+        username: username,
+        password: password,
+        website: website,
+        info: info
+      }
+
+      this.accountService.sendAccounts(account);
     }
   }
 }

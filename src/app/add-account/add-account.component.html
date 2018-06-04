@@ -5,7 +5,7 @@
   <br>
   <!-- Header -->
   <div class="w3-container">
-    <h2 class="title">{{ page.title }}</h2>
+    <h2 class="title w3-text-teal">{{ page.title }}</h2>
   </div>
   <form class="w3-container w3-padding">
     <!-- Form column 1 -->
@@ -35,11 +35,6 @@
 
     <!-- Send Button -->
     <button type="button" class="w3-btn darker-grey" (click)="SendAccount(username.value, password.value, other.value, site.value)">Send</button>
-    <!-- test -->
-    <p>{{ page.site.value }}</p>
-    <p>{{ page.username.value }}</p>
-    <p>{{ page.password.value }}</p>
-    <p>{{ page.other.value }}</p>
   </form>
 </div>
 

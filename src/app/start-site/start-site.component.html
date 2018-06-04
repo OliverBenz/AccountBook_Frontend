@@ -27,13 +27,13 @@
         account sharing website!
       </h2>
 
-      <br><br>
-
       <div id="navigation">
         <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Account</button>
         <button class="w3-hover-opacity" (click)="gotoAddsite()">Add Account</button><br>
 
-        <span [style.visibility]="page.searchInput" ><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>
+        <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>
+        <!-- Add button for send -->
+        <!-- <button [style.visibility]="page.searchInput">Search</button> -->
       </div>
     </div>
 

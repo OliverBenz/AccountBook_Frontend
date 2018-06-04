@@ -20,6 +20,6 @@ export class HeaderComponent implements OnInit {
   }
 
   SendFilter(filter){
-    this.accountService.changeFilter(filter);
+    this.accountService.getAccounts(filter);
   }
 }
