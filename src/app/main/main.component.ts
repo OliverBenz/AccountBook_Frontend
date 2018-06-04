@@ -58,6 +58,9 @@ export class MainComponent implements OnInit {
                   '<h5><b>Rating: </b>' + accounts[i].rating + ' %</h5>' +
                   '</div></div></div>';
     }
+    if(accounts.length == 0){
+      output += "<h1 style='text-align: center;'>No results for your filter</h1>";
+    }
     return output;
   }
 }

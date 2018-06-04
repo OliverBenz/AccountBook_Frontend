@@ -36,6 +36,9 @@ export class AddAccountComponent implements OnInit {
       title: 'Other'
     }
   }
+
+  accountHistory = [];
+
   constructor(
     private accountService: AccountService
   ) {
@@ -82,7 +85,19 @@ export class AddAccountComponent implements OnInit {
         info: info
       }
 
-      this.accountService.sendAccounts(account);
+      // 0 is OK; 1 is error
+      var error = "0";
+      // check for all accounts this user has posted
+      for (let i=0; i < this.accountHistory.length; i++){
+        // If account already posted - error
+        if(this.accountHistory[i].username == account.username && this.accountHistory[i].password == account.password && this.accountHistory[i].website == account.website){
+          error = "1";
+        }
+      }
+      if(error == "0"){
+        this.accountHistory.push(account);
+        this.accountService.sendAccounts(account);
+      }
     }
   }
 }

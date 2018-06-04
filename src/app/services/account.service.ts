@@ -89,6 +89,7 @@ export class AccountService {
         id: "",
         website: account.website,
         date: new Date(),
+        // TODO: we only want the dd-mm-yyyy of Date()
         username: account.username,
         password: account.password,
         info: account.info,
@@ -98,8 +99,6 @@ export class AccountService {
     };
     // TODO: Error handling
     this.http.post<AccountResponse>("http://app.fakejson.com/q", accountPost);
-    console.log(account);
-    console.log(accountPost);
   }
 }
 // Account Interface so we can acces the data in the API connection above

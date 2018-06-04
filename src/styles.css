@@ -23,7 +23,6 @@ input:focus {
     display: none;
 }
 
-
 /* Define background color classes */
 .dark-grey{
   background-color: var(--dark-grey);
