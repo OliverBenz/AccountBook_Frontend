@@ -33,4 +33,6 @@ import { StartSiteComponent } from './start-site/start-site.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

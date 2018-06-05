@@ -27,6 +27,7 @@
   color: white;
   border: none;
   float: right;
+  cursor:pointer;
 }
 #header h1{
   color: white;

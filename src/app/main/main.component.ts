@@ -16,12 +16,12 @@ export class MainComponent implements OnInit {
   constructor( private accountService: AccountService ) { }
 
   ngOnInit() {
+
     // Get all accounts
     this.accountService.currentAccounts.subscribe(account => {
       this.page.output = this.loadAccounts(account);
+      console.log(account);
     })
-
-    //TODO: If on another page: Switch to main when pressed "enter" on searchSite
   }
 
   loadAccounts(accounts){
@@ -38,6 +38,9 @@ export class MainComponent implements OnInit {
       }
     }
 
+    // Backup Array
+    this.accounts = accounts;
+
     // Generate output for accounts
     for (let i=0;i < accounts.length; i++){
         output += '<div class="w3-col s6 m4 l2">' +
@@ -52,15 +55,45 @@ export class MainComponent implements OnInit {
                   '<p><b>Password</b></p>' +
                   '<p class="overflow">' + accounts[i].password + '</p><br>' +
                   '<p><b>Other</b></p>' +
-                  '<p class="overflow">' + accounts[i].info + '</p>' +
+                  '<p class="overflow">' + accounts[i].info + '<p>' +
                   '</div>' +
                   '<div id="rating" class="w3-container w3-footer">' +
-                  '<h5><b>Rating: </b>' + accounts[i].rating + ' %</h5>' +
-                  '</div></div></div>';
+                  '<h5><b>Rating: </b>' + accounts[i].rating + '%</h5>' +
+                  '<div class="w3-col s6 m6 l6 w3-hover-opacity">' +
+                  '<button type="button">Like ( ' + accounts[i].likes + ' )</button>' +
+                  '</div>' +
+                  '<div class="w3-col s6 m6 l6 w3-hover-opacity">' +
+                  '<button type="button">Dislike ( ' + accounts[i].dislikes + ' )</button>' +
+                  '</div></div></div></div>';
     }
+    //  onclick="window.windowAddLike(1, id.value)"
     if(accounts.length == 0){
-      output += "<h1 style='text-align: center;'>No results for your filter</h1>";
+      output += "<h1 style='text-align: center;'>No accounts for your domain</h1>";
     }
+
+
     return output;
   }
+
+  // addLike(task, id){
+  //   window['windowAddLike'] = () => {
+  //     var changedAccount = {};
+  //     // TODO: ID is undefined, find another way to get account
+  //     // TODO: Function call doesn't work with dynamically added HTML
+  //     for (let i=0; i < this.accounts.length; i++){
+  //       if(this.accounts[i].id == id){
+  //         // 0 - like ; 1 - dislike
+  //         if(task == 0){
+  //           this.accounts[i].likes += 1;
+  //         }
+  //         if(task == 1){
+  //           this.accounts[i].dislikes += 1;
+  //         }
+  //         changedAccount = this.accounts[i];
+  //       }
+  //     }
+  //     this.page.output = this.loadAccounts(this.accounts);
+  //     // Push changes to database
+  //   };
+  // }
 }

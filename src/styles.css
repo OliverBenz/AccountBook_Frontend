@@ -66,15 +66,33 @@ body *{
   line-height: 15px;
 }
 .containerhight{
-  height: 450px;
+  height: 480px;
   position: relative;
+}
+
+#date{
+  text-align: right;
+  margin-right: 5px;
 }
 #rating{
   position: absolute;
   bottom: 0;
   vertical-align: bottom;
+  width: 100%;
+  margin-left: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
-#date{
-  text-align: right;
-  margin-right: 5px;
+#rating button{
+  cursor:pointer;
+  width: 100%;
+  background-color: transparent;
+  /* border: none; */
+  border-color: transparent;
+  border-style: solid;
+  height: 35px;
+  font-size: 16px;
+}
+#rating h5{
+  padding-left: 16px;
 }

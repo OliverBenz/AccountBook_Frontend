@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-//
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     "token": "sg4q4yHabwkb1ZEsgVw2Gw"
-//   })
-// };
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json"
+  })
+};
 
 
 @Injectable({
@@ -49,22 +48,19 @@ export class AccountService {
   ) {  }
 
   getAccounts(filter: string){
-    console.log(this.Accounts);
-    console.log(filter);
-
     // Clear Array
-    this.Accounts.length = 0;
+    // this.Accounts.length = 0;
 
     // Access API
     // TODO: not type <any> but <AccountsResponse>
-    this.http.get<any>('http://localhost:8081/api/account/accountdetails')
+    this.http.get<any>('http://localhost:8081/api/accounts/')
       .subscribe(data => {
           // console.log(data);
           for (let i=0; i < data.length; i++){
-            // TODO: check if data.website CONTAINS the filter %filter% or something
-            if(data.website == filter || data.website == "www." + filter){
+            // fix filter
+            // if(data.website.includes(filter)){
             this.Accounts.push({
-              id: data[i].id,
+              id: data[i].ID,
               website: data[i].website,
               date: data.date,
               username: data[i].user,
@@ -74,31 +70,29 @@ export class AccountService {
               dislikes: data[i].dislikes,
               rating: 0
             });
-            }
+            // }
           }
     })
-
+    // TODO: sort array by best rating
     this.accountSource.next(this.Accounts);
   }
 
   sendAccounts(account){
     console.log(new Date());
-    var accountPost = {
-      token: "sg4q4yHabwkb1ZEsgVw2Gw",
-      data: {
-        id: "",
-        website: account.website,
-        date: new Date(),
-        // TODO: we only want the dd-mm-yyyy of Date()
-        username: account.username,
-        password: account.password,
-        info: account.info,
-        likes: 0,
-        dislikes: 0
-      }
+    var body = {
+      "date": "2018-06-06",
+      "dislikes": 0,
+      "ID": "",
+      "info": account.info,
+      "likes": 0,
+      "password": account.password,
+      "user": account.username,
+      "website": account.website
     };
     // TODO: Error handling
-    this.http.post<AccountResponse>("http://app.fakejson.com/q", accountPost);
+    console.log(httpOptions);
+    console.log(body);
+    this.http.post<any>("http://localhost:8081/api/accounts/", body, httpOptions);
   }
 }
 // Account Interface so we can acces the data in the API connection above
