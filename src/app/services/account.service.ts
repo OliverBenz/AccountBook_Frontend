@@ -80,19 +80,22 @@ export class AccountService {
   sendAccounts(account){
     console.log(new Date());
     var body = {
-      "date": "2018-06-06",
-      "dislikes": 0,
       "ID": "",
+      "website": account.website,
+      "date": "2018-06-06",
+      "user": account.username,
+      "password": account.password,
       "info": account.info,
       "likes": 0,
-      "password": account.password,
-      "user": account.username,
-      "website": account.website
+      "dislikes": 0
     };
     // TODO: Error handling
     console.log(httpOptions);
     console.log(body);
-    this.http.post<any>("http://localhost:8081/api/accounts/", body, httpOptions);
+    this.http.post("http://localhost:8081/api/accounts/", body, httpOptions)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
 }
 // Account Interface so we can acces the data in the API connection above
