@@ -35,7 +35,7 @@ export class StartSiteComponent implements OnInit {
     // Send Filter and show results
     this.accountService.getAccounts(filter);
     this.page.searchInput = "hidden";
-    // this.gotoAccountssite();
+    this.gotoAccountssite();
   }
 
   gotoStartsite(){

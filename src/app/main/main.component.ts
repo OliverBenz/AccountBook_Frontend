@@ -17,11 +17,13 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     // Get all accounts
-    this.accountService.currentAccounts.subscribe(account => {
-      this.loadAccounts(account);
-    })
+    this.accountService.currentAccounts
+      .subscribe(account => {
+        this.loadAccounts(account);
+        console.log("Accounts in main.component:");
+        console.log(account);
+      })
   }
 
   loadAccounts(accounts){

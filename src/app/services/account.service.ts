@@ -18,8 +18,8 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
-  url = "http://localhost:8081/api/accounts";
-  // url = "https://api.github.com/users/OliverBenz";
+  // url = "http://localhost:8081/api/accounts";
+  url = "https://api.github.com/users/OliverBenz";
 
   Accounts = [
     {
@@ -58,11 +58,9 @@ export class AccountService {
     // TODO: not type <any> but <AccountsResponse>
     this.http.get<any>(this.url)
       .subscribe(data => {
-          console.log(data);
           for (let i=0; i < data.length; i++){
             // fix filter
             if(data[i].website.includes(filter) || filter == ""){
-              console.log(data);
               this.Accounts.push({
                 id: data[i].ID,
                 website: data[i].website,
@@ -92,10 +90,9 @@ export class AccountService {
 
     // Sort Array by rating desc
     // TODO: sort array by best rating
-    for(let i = 0; i < this.Accounts.length; i++){
-
-    }
-
+    // for(let i = 0; i < this.Accounts.length; i++){
+    //
+    // }
     this.accountSource.next(this.Accounts);
   }
 
