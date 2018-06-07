@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,10 @@ export class MainComponent implements OnInit {
   accounts = [ ]
   output = ""
 
-  constructor( private accountService: AccountService ) { }
+  constructor(
+    private accountService: AccountService,
+    public router: Router
+  ) { }
 
   ngOnInit() {
 
@@ -56,6 +60,7 @@ export class MainComponent implements OnInit {
       output += "<h1 style='text-align: center;'>No accounts for your domain</h1>";
     }
     this.output = output;
+    this.router.navigate(["/main"]);
   }
 
   // addLike(task, id){

@@ -18,8 +18,8 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
-  // url = "http://localhost:8081/api/accounts";
-  url = "https://api.github.com/users/OliverBenz";
+  url = "http://localhost:8081/api/accounts";
+  // url = "https://api.github.com/users/OliverBenz";
 
   Accounts = [
     {
@@ -52,29 +52,30 @@ export class AccountService {
 
   getAccounts(filter: string){
     // Clear Array
-    // this.Accounts.length = 0;
+    this.Accounts.length = 0;
 
     // Access API
     // TODO: not type <any> but <AccountsResponse>
     this.http.get<any>(this.url)
       .subscribe(data => {
+          console.log(data);
           for (let i=0; i < data.length; i++){
             // fix filter
-            // if(data.website.includes(filter)){
-            console.log(data);
-            this.Accounts.push({
-              id: data[i].ID,
-              website: data[i].website,
-              date: data.date,
-              username: data[i].login,
-              password: data[i].password,
-              info: data[i].info,
-              likes: data[i].likes,
-              dislikes: data[i].dislikes,
-              rating: 0
-            });
-            console.log(this.Accounts);
-            // }
+            if(data[i].website.includes(filter) || filter == ""){
+              console.log(data);
+              this.Accounts.push({
+                id: data[i].ID,
+                website: data[i].website,
+                date: data.date,
+                username: data[i].login,
+                password: data[i].password,
+                info: data[i].info,
+                likes: data[i].likes,
+                dislikes: data[i].dislikes,
+                rating: 0
+              });
+              console.log(this.Accounts);
+            }
           }
     })
 
@@ -90,8 +91,11 @@ export class AccountService {
     }
 
     // Sort Array by rating desc
-
     // TODO: sort array by best rating
+    for(let i = 0; i < this.Accounts.length; i++){
+
+    }
+
     this.accountSource.next(this.Accounts);
   }
 
@@ -108,12 +112,9 @@ export class AccountService {
       "dislikes": 0
     };
     // TODO: Error handling
-    console.log(httpOptions);
-    console.log(body);
-    this.http.post(this.url, body, httpOptions)
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+    this.http.post(this.url, body, httpOptions);
+      // .subscribe((data: any) => {
+      // });
   }
 }
 // Account Interface so we can acces the data in the API connection above
@@ -126,4 +127,5 @@ interface AccountResponse {
   info: string;
   likes: number;
   dislikes: number;
+  rating: number;
 }
