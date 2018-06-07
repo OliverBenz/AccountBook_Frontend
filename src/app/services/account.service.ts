@@ -18,6 +18,9 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
+  // url = "http://localhost:8081/api/accounts";
+  url = "https://api.github.com/users/OliverBenz";
+
   Accounts = [
     {
         id: 1,
@@ -53,26 +56,41 @@ export class AccountService {
 
     // Access API
     // TODO: not type <any> but <AccountsResponse>
-    this.http.get<any>('http://localhost:8081/api/accounts/')
+    this.http.get<any>(this.url)
       .subscribe(data => {
-          // console.log(data);
           for (let i=0; i < data.length; i++){
             // fix filter
             // if(data.website.includes(filter)){
+            console.log(data);
             this.Accounts.push({
               id: data[i].ID,
               website: data[i].website,
               date: data.date,
-              username: data[i].user,
+              username: data[i].login,
               password: data[i].password,
               info: data[i].info,
               likes: data[i].likes,
               dislikes: data[i].dislikes,
               rating: 0
             });
+            console.log(this.Accounts);
             // }
           }
     })
+
+    // Calculate percentage rating for every object
+    for (let i in this.Accounts){
+      if(this.Accounts[i].likes == 0 && this.Accounts[i].dislikes == 0){
+        this.Accounts[i].rating = 0;
+      }
+      else{
+        var rate = ( 100 / (this.Accounts[i].likes + this.Accounts[i].dislikes)) * this.Accounts[i].likes;
+        this.Accounts[i].rating = Math.round(rate);
+      }
+    }
+
+    // Sort Array by rating desc
+
     // TODO: sort array by best rating
     this.accountSource.next(this.Accounts);
   }
@@ -92,7 +110,7 @@ export class AccountService {
     // TODO: Error handling
     console.log(httpOptions);
     console.log(body);
-    this.http.post("http://localhost:8081/api/accounts/", body, httpOptions)
+    this.http.post(this.url, body, httpOptions)
       .subscribe((data: any) => {
         console.log(data);
       });

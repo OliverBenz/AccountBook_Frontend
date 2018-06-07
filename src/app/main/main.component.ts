@@ -8,10 +8,7 @@ import { AccountService } from '../services/account.service'
 })
 export class MainComponent implements OnInit {
   accounts = [ ]
-  page = {
-    rating: 'Rating: ' + '90%',
-    output: ''
-  }
+  output = ""
 
   constructor( private accountService: AccountService ) { }
 
@@ -19,24 +16,12 @@ export class MainComponent implements OnInit {
 
     // Get all accounts
     this.accountService.currentAccounts.subscribe(account => {
-      this.page.output = this.loadAccounts(account);
-      console.log(account);
+      this.loadAccounts(account);
     })
   }
 
   loadAccounts(accounts){
     var output = '';
-
-    // Calculate percentage rating for every object
-    for (let i in accounts){
-      if(accounts[i].likes == 0 && accounts[i].dislikes == 0){
-        accounts[i].rating = 0;
-      }
-      else{
-        var rate = ( 100 / (accounts[i].likes + accounts[i].dislikes)) * accounts[i].likes;
-        accounts[i].rating = Math.round(rate);
-      }
-    }
 
     // Backup Array
     this.accounts = accounts;
@@ -70,9 +55,7 @@ export class MainComponent implements OnInit {
     if(accounts.length == 0){
       output += "<h1 style='text-align: center;'>No accounts for your domain</h1>";
     }
-
-
-    return output;
+    this.output = output;
   }
 
   // addLike(task, id){
