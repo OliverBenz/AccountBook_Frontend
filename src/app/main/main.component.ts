@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
     this.accountService.currentAccounts
       .subscribe(account => {
         this.loadAccounts(account);
-        console.log("Accounts in main.component:");
+        console.log("Accounts in main.component: ");
         console.log(account);
       })
   }
