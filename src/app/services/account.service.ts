@@ -82,8 +82,7 @@ export class AccountService {
     this.http.get<any>(this.url)
       .subscribe(data => {
           for (let i=0; i < data.length; i++){
-            // fix filter
-            if(data[i].website.includes(filter) || filter == ""){
+            if(data[i].website.includes(filter)){
               Accounts.push({
                 id: data[i].ID,
                 website: data[i].website,
@@ -95,10 +94,21 @@ export class AccountService {
                 dislikes: data[i].dislikes,
                 rating: 0
               });
-              console.log(Accounts);
+              console.log(data);
             }
           }
     })
+    console.log(Accounts);
+
+    // --------- Del Test Data ---------
+    for(let i = 0; i < Accounts.length; i++){
+      if (!Accounts[i].website.includes(filter)){
+        Accounts.splice(i, 1);
+      }
+    }
+    // TODO: FIX ,shit doesnt work
+    console.log(Accounts);
+
 
     // --------- Calculate Rating ---------
     for (let i in Accounts){
@@ -110,36 +120,31 @@ export class AccountService {
         Accounts[i].rating = Math.round(rate);
       }
     }
-
+    console.log(Accounts);
 
     // --------- Sort Accounts ---------
-    var sortedArray = [];
+    var newID = 0;
     for(let i = 0; i < Accounts.length; i++){
-      var bigAr = Accounts[i];
+      var BigAr = Accounts[i];
 
-      // Find biggest value rating
-      for(let a = 0; a < Accounts.length; a++){
-        if(bigAr.rating < Accounts[a].rating){
-          bigAr = Accounts[a];
+      for(let a = 0 + newID; a < Accounts.length; a++){
+        if(BigAr.rating < Accounts[a].rating){
+          BigAr = Accounts[a];
         }
       }
-
-      sortedArray.push(bigAr);
-
-      // Remove the biggest Account --> Already saved in new Array
-      for(let x=0; x<Accounts.length; x++){
-        if(Accounts[x] == bigAr){
-          Accounts.splice(x, 1);
+      // Remove from old Index and add to new index
+      var oldID = 0
+      for(let b = 0; b < Accounts.length; b++){
+        if(Accounts[b] == BigAr){
+          oldID = b;
         }
       }
-      // Reset i: Repeat for-loop with new Accounts.length
-      i = 0;
+      Accounts.splice(oldID, 1);
+      Accounts.splice(newID, 0, BigAr);
+      newID++;
     }
-    // Push last Account into new Array
-    sortedArray.push(Accounts[0]);
 
-
-    this.accountSource.next(sortedArray);
+    this.accountSource.next(Accounts);
   }
 
   // -----------------------------------------
