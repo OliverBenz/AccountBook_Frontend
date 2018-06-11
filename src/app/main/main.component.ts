@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  accounts = [ ]
   output = ""
 
   constructor(
@@ -21,7 +20,7 @@ export class MainComponent implements OnInit {
     this.accountService.currentAccounts
       .subscribe(account => {
         this.loadAccounts(account);
-        console.log("Accounts in main.component: ");
+        console.log("--- Accounts in main.component --- ");
         console.log(account);
       })
   }
@@ -30,10 +29,10 @@ export class MainComponent implements OnInit {
     var output = '';
 
     // Backup Array
-    this.accounts = accounts;
-    console.log(accounts);
+    // this.accounts = accounts;
+
     // Generate output for accounts
-    for (let i=0;i < accounts.length; i++){
+    for (let i = 0; i < accounts.length; i++){
         output += '<div class="w3-col s6 m4 l2">' +
                   '<div class="w3-margin w3-card w3-hover-shadow containerhight">' +
                   '<div class="w3-container w3-header darker-grey">' +
