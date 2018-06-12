@@ -20,8 +20,6 @@ export class MainComponent implements OnInit {
     this.accountService.currentAccounts
       .subscribe(account => {
         this.loadAccounts(account);
-        console.log("--- Accounts in main.component --- ");
-        console.log(account);
       })
   }
 
@@ -30,7 +28,7 @@ export class MainComponent implements OnInit {
 
     // Backup Array
     // this.accounts = accounts;
-
+    console.log(accounts);
     // Generate output for accounts
     for (let i = 0; i < accounts.length; i++){
         output += '<div class="w3-col s6 m4 l2">' +

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   })
 };
 
@@ -31,100 +31,37 @@ export class AccountService {
   // -----------------------------------------
   getAccounts(filter: string){
     // --------- Test Data ---------
-    let Accounts = [
-      // {
-      //     id: 1,
-      //     website: 'twitter.com',
-      //     date: '8.5.2018',
-      //     username: 'KoolKidKlaus',
-      //     password: 'minecraftForLife1',
-      //     info: "Pls don't hack me, I like this account",
-      //     likes: 100,
-      //     dislikes: 10,
-      //     rating: 0
-      //   },
-      //   {
-      //     id: 2,
-      //     website: 'bugmenot.com',
-      //     date: '8.5.2018',
-      //     username: 'MinecraftBoy',
-      //     password: 'minecraftForEternity123',
-      //     info: "mmmmmmmmmmmm mmmmmmmm",
-      //     likes: 1000,
-      //     dislikes: 2,
-      //     rating: 0
-      //   },
-      //   {
-      //     id: 3,
-      //     website: 'bugmenotsdf.com',
-      //     date: '8.5.2019',
-      //     username: 'MinesdfcraftBoy',
-      //     password: 'minecrasdfftForEternity123',
-      //     info: "mmmmmmmmmmmm",
-      //     likes: 145,
-      //     dislikes: 2,
-      //     rating: 0
-      //   },
-        // {
-        //   id: 4,
-        //   website: 'minecraft.com',
-        //   date: '8.5.2014',
-        //   username: 'MinesdfcraftBoy',
-        //   password: 'minecrasdfftForEternity123',
-        //   info: "test",
-        //   likes: 12,
-        //   dislikes: 222,
-        //   rating: 0
-        // }
-      ]
+    var Accounts = [ ]
 
     // --------- Get Data form API ---------
     this.http.get<any>(this.url)
       .subscribe(data => {
-        Accounts = data;
-          // for (let i = 0; i < data.length; i++){
-          //   if(data[i].website.includes(filter)){
-          //     Accounts.push({
-          //       id: data[i].ID,
-          //       website: data[i].website,
-          //       date: data[i].date,
-          //       username: data[i].user,
-          //       password: data[i].password,
-          //       info: data[i].info,
-          //       likes: data[i].likes,
-          //       dislikes: data[i].dislikes,
-          //       rating: 0
-          //     });
-          //   }
-          // }
-          console.log("--- API Data ---");
-          console.log(data);
-          console.log("--- Account Array ---");
-          console.log(Accounts);
-    })
-    // TODO: Add filter before push
-    // --------- Del unwanted Data ---------
-    for(let i = 0; i < Accounts.length; i++){
-      if (!Accounts[i].website.includes(filter)){
-        Accounts.splice(i, 1);
-        i -= 1;
-      }
-    }
+        // Accounts = data;
+          for (let i = 0; i < data.length; i++){
+            if(data[i].website.includes(filter)){
+              Accounts.push({
+                id: data[i].ID,
+                website: data[i].website,
+                date: data[i].date,
+                username: data[i].user,
+                password: data[i].password,
+                info: data[i].info,
+                likes: data[i].likes,
+                dislikes: data[i].dislikes,
+                rating: 0
+              });
+            }
+          }
 
-    // --------- Calculate Rating ---------
-    console.log("--- Before Rating ---");
-    console.log(Accounts);
-    Accounts = this.calcRating(Accounts);
+          // --------- Calculate Rating ---------
+          Accounts = this.calcRating(Accounts);
 
-    // --------- Sort Accounts ---------
-    console.log("--- Before Sort ---");
-    console.log(Accounts);
-    Accounts = this.sortAccounts(Accounts);
+          // --------- Sort Accounts ---------
+          Accounts = this.sortAccounts(Accounts);
 
-    // --------- Send Accounts ---------
-    console.log("--- Before Send ---");
-    console.log(Accounts);
-    this.accountSource.next(Accounts);
+          // --------- Push Accounts ---------
+          this.accountSource.next(Accounts);
+    });
   }
 
   // -----------------------------------------
@@ -132,20 +69,24 @@ export class AccountService {
   // -----------------------------------------
   sendAccounts(account){
     console.log(new Date());
-    var body = {
-      "ID": "",
-      "website": account.website,
-      "date": "2018-06-06",
-      "user": account.username,
-      "password": account.password,
-      "info": account.info,
-      "likes": 0,
-      "dislikes": 0
-    };
+    console.log(account);
+    let body = JSON.parse('{"ID": "", "website": ' + account.website + ', "date": "2018-06-06", "user": ' + account.username + ', "password": ' + account.password + ', "info": ' + account.info + ', "likes": 0, "dislikes": 0}');
+
+
+    // {
+    //   "ID": "",
+    //   "website": account.website,
+    //   "date": "2018-06-06",
+    //   "user": account.username,
+    //   "password": account.password,
+    //   "info": account.info,
+    //   "likes": 0,
+    //   "dislikes": 0
+    // }
     // TODO: Error handling
-    this.http.post(this.url, body, httpOptions);
-      // .subscribe((data: any) => {
-      // });
+    this.http.post(this.url, body, httpOptions).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
   // -----------------------------------------
