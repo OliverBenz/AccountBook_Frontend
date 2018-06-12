@@ -70,8 +70,7 @@ export class AccountService {
   sendAccounts(account){
     console.log(new Date());
     console.log(account);
-    let body = JSON.parse('{"ID": "", "website": ' + account.website + ', "date": "2018-06-06", "user": ' + account.username + ', "password": ' + account.password + ', "info": ' + account.info + ', "likes": 0, "dislikes": 0}');
-
+    let body = JSON.parse('{"ID": 0, "website": "' + account.website + '", "date": "2018-06-06", "user": "' + account.username + '", "password": "' + account.password + '", "info": "' + account.info + '", "likes": 0, "dislikes": 0}');
 
     // {
     //   "ID": "",
@@ -83,6 +82,7 @@ export class AccountService {
     //   "likes": 0,
     //   "dislikes": 0
     // }
+
     // TODO: Error handling
     this.http.post(this.url, body, httpOptions).subscribe((data: any) => {
       console.log(data);
