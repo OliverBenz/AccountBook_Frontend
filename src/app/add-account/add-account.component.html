@@ -5,20 +5,20 @@
   <br>
   <!-- Header -->
   <div class="w3-container">
-    <h2 class="title w3-text-teal">{{ page.title }}</h2>
+    <h2 class="title">{{ page.title }}</h2>
   </div>
   <form class="w3-container w3-padding">
       <!-- Form row 1 -->
     <div class="w3-row">
       <!-- Username -->
       <div class="w3-col s6 m6 l6">
-        <label class="w3-text-teal"><b>{{ page.username.title }}</b></label>
+        <label class=""><b>{{ page.username.title }}</b></label>
         <!-- <span class="error" [hidden]="page.username.error.hidden">{{ page.username.error.message }}</span> -->
         <input #username class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.username.error.message}}">
       </div>
       <!-- Password -->
       <div class="w3-col s6 m6 l6">
-        <label class="w3-text-teal"><b>{{ page.password.title }}</b></label>
+        <label class=""><b>{{ page.password.title }}</b></label>
         <!-- <span class="error" [hidden]="page.password.error.hidden">{{ page.password.error.message }}</span> -->
         <input #password class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.password.error.message}}">
       </div>
@@ -28,17 +28,17 @@
     <div class="w3-row">
       <!-- Website -->
       <div class="w3-col s6 m6 l6">
-        <label class="w3-text-teal"><b>{{ page.site.title }}</b></label>
+        <label class=""><b>{{ page.site.title }}</b></label>
         <!-- <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span> -->
         <input #site class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.site.error.message}}">
       </div>
       <!-- Other -->
       <div class="w3-col s6 m6 l6">
-        <label class="w3-text-teal"><b>{{ page.other.title }}</b></label>
+        <label class=""><b>{{ page.other.title }}</b></label>
         <input #other maxlength="30" class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
       </div>
     </div>
-    
+
     <!-- Send Button -->
     <button type="button" class="w3-btn darker-grey" (click)="SendAccount(username.value, password.value, other.value, site.value)">Send</button>
   </form>
