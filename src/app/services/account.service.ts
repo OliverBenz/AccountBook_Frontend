@@ -18,7 +18,8 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
-  url = "http://localhost:8081/api/accounts";
+  // url = "http://localhost:8081/api/accounts";
+  url = "http://localhost:8080/api/accounts";
   // url = "https://api.github.com/users/OliverBenz";
 
   constructor(

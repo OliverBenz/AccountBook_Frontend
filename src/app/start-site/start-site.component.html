@@ -3,10 +3,9 @@
   <div id="header" class="w3-row">
     <div class="w3-col s6 m6 l6 ">
       <h1>AccountBook</h1>
-      <br><br>
     </div>
     <div class="w3-col s6 m6 l6">
-      <button class="w3-hover-opacity" (click)="gotoStartsite()">Startsite ☰</button>
+      <button class="w3-hover-opacity" (click)="gotoStartsite()">Home ☰</button>
     </div>
   </div>
 
@@ -18,14 +17,10 @@
     </div>
 
     <!-- Introduction -->
-    <div class="w3-col s6 m6 l6">
+    <div class="w3-col s10 m5 l5">
       <h5>Welcome to AccountBook</h5>
 
-      <h2>
-        We barely provide any data <br>
-        and are the worlds smallest <br>
-        account sharing website!
-      </h2>
+      <h2>{{ page.slogan }}</h2>
 
       <div id="navigation">
         <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Account</button>
@@ -35,12 +30,11 @@
       </div>
     </div>
 
-
-    <div id="navDiv" class="w3-col s5 m5 l5">
+    <div id="navDiv" class="w3-col s1 m6 l6">
       <p></p>
       <!-- Maybe add navigation icons -->
       <!-- <img src="/assets/images//icons/form_white.png" alt="Add_Account_Image"> -->
     </div>
   </div>
-  <p id="version">Version 3.0</p>
+  <p id="version">Version 3.1</p>
 </div>

@@ -33,7 +33,8 @@ export class AddAccountComponent implements OnInit {
       }
     },
     other: {
-      title: 'Other'
+      title: 'Other',
+      message: "Nor required"
     }
   }
 

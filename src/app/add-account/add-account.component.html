@@ -1,7 +1,7 @@
 <!-- Size spacing left -->
-<div class="w3-col s2 m2 l2"><p></p></div>
+<div class="w3-col s1 m2 l2"><p></p></div>
 
-<div class="w3-container w3-col s8 m8 l8 w3-animate-opacity">
+<div class="w3-container w3-col s10 m8 l8 w3-animate-opacity">
   <br>
   <!-- Header -->
   <div class="w3-container">
@@ -11,13 +11,13 @@
       <!-- Form row 1 -->
     <div class="w3-row">
       <!-- Username -->
-      <div class="w3-col s6 m6 l6">
+      <div class="w3-col s12 m6 l6">
         <label class=""><b>{{ page.username.title }}</b></label>
         <!-- <span class="error" [hidden]="page.username.error.hidden">{{ page.username.error.message }}</span> -->
         <input #username class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.username.error.message}}">
       </div>
       <!-- Password -->
-      <div class="w3-col s6 m6 l6">
+      <div class="w3-col s12 m6 l6">
         <label class=""><b>{{ page.password.title }}</b></label>
         <!-- <span class="error" [hidden]="page.password.error.hidden">{{ page.password.error.message }}</span> -->
         <input #password class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.password.error.message}}">
@@ -27,15 +27,15 @@
     <!-- Form row 2 -->
     <div class="w3-row">
       <!-- Website -->
-      <div class="w3-col s6 m6 l6">
+      <div class="w3-col s12 m6 l6">
         <label class=""><b>{{ page.site.title }}</b></label>
         <!-- <span class="error" [hidden]="page.site.error.hidden">{{ page.site.error.message }}</span> -->
         <input #site class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.site.error.message}}">
       </div>
       <!-- Other -->
-      <div class="w3-col s6 m6 l6">
+      <div class="w3-col s12 m6 l6">
         <label class=""><b>{{ page.other.title }}</b></label>
-        <input #other maxlength="30" class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text">
+        <input #other maxlength="30" class="w3-input w3-light-grey" (keyup.enter)="SendAccount(username.value, password.value, other.value, site.value)" type="text" placeholder="{{page.other.message}}">
       </div>
     </div>
 
@@ -45,4 +45,4 @@
 </div>
 
 
-<div class="w3-col s2 m2 l2"></div>
+<div class="w3-col s1 m2 l2"></div>

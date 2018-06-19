@@ -6,6 +6,9 @@ input{
 button{
   width: 100%;
 }
+.w3-col{
+  margin-bottom: 20px;
+}
 .w3-row{
   padding-bottom: 20px;
 }

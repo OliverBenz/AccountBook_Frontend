@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
     console.log(accounts);
     // Generate output for accounts
     for (let i = 0; i < accounts.length; i++){
-        output += '<div class="w3-col s6 m4 l2">' +
+        output += '<div class="w3-col s12 m4 l2">' +
                   '<div class="w3-margin w3-card w3-hover-shadow containerhight">' +
                   '<div class="w3-container w3-header darker-grey">' +
                   '<h2 class="title">' + accounts[i].website + '</h2>' +

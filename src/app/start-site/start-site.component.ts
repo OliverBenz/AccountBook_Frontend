@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class StartSiteComponent implements OnInit {
   page = {
+    slogan: "We barely provide any data and are the worlds smallest account sharing website!",
     searchInput: "hidden"
   }
-
 
   constructor(
     private accountService: AccountService,
