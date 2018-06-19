@@ -26,9 +26,6 @@ export class MainComponent implements OnInit {
   loadAccounts(accounts){
     var output = '';
 
-    // Backup Array
-    // this.accounts = accounts;
-    console.log(accounts);
     // Generate output for accounts
     for (let i = 0; i < accounts.length; i++){
         output += '<div class="w3-col s12 m4 l3">' +
