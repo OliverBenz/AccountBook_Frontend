@@ -69,9 +69,10 @@ export class AccountService {
   //           Send Accounts
   // -----------------------------------------
   sendAccounts(account){
-    console.log(new Date());
-    console.log(account);
-    let body = JSON.parse('{"ID": 0, "website": "' + account.website + '", "date": "2018-06-06", "user": "' + account.username + '", "password": "' + account.password + '", "info": "' + account.info + '", "likes": 0, "dislikes": 0}');
+    var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'};
+    var date = new Date().toLocaleString('de-AU', dateOptions);
+
+    let body = JSON.parse('{"ID": 0, "website": "' + account.website + '", "date": "' + date + '", "user": "' + account.username + '", "password": "' + account.password + '", "info": "' + account.info + '", "likes": 0, "dislikes": 0}');
 
     // {
     //   "ID": "",

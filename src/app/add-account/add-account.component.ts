@@ -34,7 +34,7 @@ export class AddAccountComponent implements OnInit {
     },
     other: {
       title: 'Other',
-      message: "Nor required"
+      message: "Not required"
     }
   }
 
