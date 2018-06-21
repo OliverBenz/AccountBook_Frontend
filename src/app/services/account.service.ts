@@ -10,7 +10,6 @@ const httpOptions = {
   })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,9 +17,12 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
+  // --------- Local Testing ---------
   // url = "http://localhost:8081/api/accounts";
-  url = "http://localhost:8080/api/accounts";
-  // url = "https://api.github.com/users/OliverBenz";
+
+  // --------- Server Testing ---------
+  url = "http://18.194.81.88:8080/api/accounts";
+
 
   constructor(
     private http: HttpClient
@@ -38,6 +40,7 @@ export class AccountService {
     this.http.get<any>(this.url)
       .subscribe(data => {
         // Accounts = data;
+        console.log(data);
           for (let i = 0; i < data.length; i++){
             if(data[i].website.includes(filter)){
               Accounts.push({
