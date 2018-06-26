@@ -21,7 +21,7 @@ export class AccountService {
   // url = "http://localhost:8081/api/accounts";
 
   // --------- Server Testing ---------
-  url = "http://127.0.0.1:3306/api/accounts";
+  url = "http://18.185.84.90:8080/api/accounts";
 
 
   constructor(
