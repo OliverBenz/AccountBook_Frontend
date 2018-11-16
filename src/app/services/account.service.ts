@@ -1,3 +1,5 @@
+import { Account } from '../classes/account/account';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -33,38 +35,30 @@ export class AccountService {
   //           Get Accounts
   // -----------------------------------------
   getAccounts(filter: string){
-    // --------- Test Data ---------
-    var Accounts = [ ]
+    var accountList: Array<Account> = [];
 
-    // --------- Get Data form API ---------
-    this.http.get<any>(this.url)
-      .subscribe(data => {
-        // Accounts = data;
-        console.log(data);
-          for (let i = 0; i < data.length; i++){
-            if(data[i].website.includes(filter)){
-              Accounts.push({
-                id: data[i].ID,
-                website: data[i].website,
-                date: data[i].date,
-                username: data[i].user,
-                password: data[i].password,
-                info: data[i].info,
-                likes: data[i].likes,
-                dislikes: data[i].dislikes,
-                rating: 0
-              });
-            }
-          }
+    this.http.get<any>(this.url).subscribe(data => {
+      for(let i = 0; i < data.length; i++){
+        var account: Account = new Account(
+          data[i].ID,
+          data[i].website,
+          data[i].user,
+          data[i].password,
+          data[i].date,
+          data[i].info,
+          data[i].likes,
+          data[i].dislikes
+        );
+      }
 
-          // --------- Calculate Rating ---------
-          Accounts = this.calcRating(Accounts);
+      // --------- Calculate Rating ---------
+      accountList = this.calcRating(accountList);
 
-          // --------- Sort Accounts ---------
-          Accounts = this.sortAccounts(Accounts);
+      // --------- Sort Accounts ---------
+      accountList = this.sortAccounts(accountList);
 
-          // --------- Push Accounts ---------
-          this.accountSource.next(Accounts);
+      // --------- Push Accounts ---------
+      this.accountSource.next(accountList);
     });
   }
 
@@ -72,20 +66,17 @@ export class AccountService {
   //           Send Accounts
   // -----------------------------------------
   sendAccounts(account){
-    var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var date = new Date().toLocaleString('de-AU', dateOptions);
-
-    let body = JSON.parse('{"ID": 0, "website": "' + account.website + '", "date": "' + date + '", "user": "' + account.username + '", "password": "' + account.password + '", "info": "' + account.info + '", "likes": 0, "dislikes": 0}');
-
-    // {
-    //   "ID": "",
-    //   "website": account.website,
-    //   "date": "2018-06-06",
-    //   "user": account.username,
-    //   "password": account.password,
-    //   "info": account.info,
-    //   "likes": 0,
-    //   "dislikes": 0
+    let body = JSON.parse('{"ID": 0, "website": "' + account.getWebsite() + '", "date": "' + account.getDate() + '", "user": "' + account.getUsername() + '", "password": "' + account.getPassword() + '", "info": "' + account.getInfo() + '", "likes": 0, "dislikes": 0}');
+    console.log(body);
+       // {
+    //   "ID": account.getId(),
+    //   "website": account.getWebsite(),
+    //   "date": account.getDate(),
+    //   "user": account.getUsername(),
+    //   "password": account.getPassword(),
+    //   "info": account.getInfo(),
+    //   "likes": account.getLikes(),
+    //   "dislikes": account.getDislikes()
     // }
 
     // TODO: Error handling
@@ -97,14 +88,14 @@ export class AccountService {
   // -----------------------------------------
   //           Calculate Rating
   // -----------------------------------------
-  calcRating(Accounts){
+  calcRating(Accounts: Array<Account>){
     for (let i in Accounts){
-      if(Accounts[i].likes == 0 && Accounts[i].dislikes == 0){
-        Accounts[i].rating = 0;
+      if(Accounts[i].getLikes() == 0 && Accounts[i].getDislikes() == 0){
+        Accounts[i].setRating(0);
       }
       else{
-        var rate = ( 100 / (Accounts[i].likes + Accounts[i].dislikes)) * Accounts[i].likes;
-        Accounts[i].rating = Math.round(rate);
+        var rate = ( 100 / (Accounts[i].getLikes() + Accounts[i].getDislikes())) * Accounts[i].getLikes();
+        Accounts[i].setRating(Math.round(rate)); 
       }
     }
 
@@ -120,7 +111,7 @@ export class AccountService {
       var BigAr = Accounts[i];
 
       for(let a = 0 + newID; a < Accounts.length; a++){
-        if(BigAr.rating < Accounts[a].rating){
+        if(BigAr.getRating() < Accounts[a].getRating()){
           BigAr = Accounts[a];
         }
       }
@@ -139,20 +130,4 @@ export class AccountService {
 
     return Accounts;
   }
-}
-
-
-// -----------------------------------------
-//           Account Interface
-// -----------------------------------------
-interface AccountResponse {
-  id: number;
-  website: string;
-  date: string;
-  username: string;
-  password: string;
-  info: string;
-  likes: number;
-  dislikes: number;
-  rating: number;
 }

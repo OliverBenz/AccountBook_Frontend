@@ -1,3 +1,4 @@
+import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
@@ -8,10 +9,12 @@ import { StartSiteComponent } from './start-site/start-site.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
+  { path: 'header', component: HeaderComponent },
   { path: 'index', component: IndexComponent },
   { path: 'main', component: MainComponent },
   { path: 'add', component: AddAccountComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: '**', redirectTo: "index", pathMatch: "full"}
 ];
 
 @NgModule({

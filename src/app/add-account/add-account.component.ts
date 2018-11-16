@@ -1,3 +1,5 @@
+import { Account } from '../classes/account/account';
+
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service';
 
@@ -38,7 +40,7 @@ export class AddAccountComponent implements OnInit {
     }
   }
 
-  accountHistory = [];
+  accountHistory: Array<Account> = [];
 
   constructor(
     private accountService: AccountService
@@ -79,19 +81,18 @@ export class AddAccountComponent implements OnInit {
 
     // OK - ready for push
     if(username != '' && password != '' && website != ''){
-      let account = {
-        username: username,
-        password: password,
-        website: website,
-        info: info
-      }
+      var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'};
+      var date = new Date().toLocaleString('de-AU', dateOptions);
+
+      let account: Account = new Account(0, website, username, password, date, info, 0, 0);
 
       // 0 is OK; 1 is error
       var error = "0";
+
       // check for all accounts this user has posted
       for (let i=0; i < this.accountHistory.length; i++){
         // If account already posted - error
-        if(this.accountHistory[i].username == account.username && this.accountHistory[i].password == account.password && this.accountHistory[i].website == account.website){
+        if(this.accountHistory[i].getUsername() == account.getUsername() && this.accountHistory[i].getPassword() == account.getPassword() && this.accountHistory[i].getWebsite() == account.getWebsite()){
           error = "1";
         }
       }

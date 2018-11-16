@@ -1,31 +1,25 @@
-<!-- Get output HTML from component.ts -->
-<div [innerHTML] = "output | safeHTML"></div>
-
-<!-- TODO: User can't like same login twice -->
-<!-- TODO: Push changes to database -->
-
-<!-- <div #id id="3" class="w3-col s12 m4 l3">
+<div *ngFor="let ac of accountList" id="{{ ac.getId() }}" class="w3-col s12 m4 l3">
   <div class="w3-margin w3-card w3-hover-shadow containerhight">
     <div class="w3-container w3-header darker-grey">
-      <h2 class="title">website</h2>
-      <p id="date">4.3.2018</p>
+      <h2 class="title">{{ ac.getWebsite() }}</h2>
+      <p id="date">{{ ac.getDate() }}</p>
     </div>
     <div class="userInfo w3-container">
       <p><b>Username</b></p>
-      <p class="overflow">name</p><br>
+      <p class="overflow">{{ ac.getUsername() }}</p><br>
       <p><b>Password</b></p>
-      <p class="overflow">password</p><br>
+      <p class="overflow">{{ ac.getPassword() }}</p><br>
       <p><b>Other</b></p>
-      <p class="overflow">Info Info<p>
+      <p class="overflow">{{ ac.getInfo() }}<p>
     </div>
     <div id="rating" class="w3-container w3-footer">
-      <h5><b>Rating: </b>95%</h5>
+      <h5><b>Rating: </b>{{ ac.getRating() }} %</h5>
       <div class="w3-col s6 m6 l6 w3-hover-opacity">
-        <button type="button">Like ( 508 )</button>
+        <button type="button">Like ( {{ ac.getLikes() }} )</button>
       </div>
       <div class="w3-col s6 m6 l6 w3-hover-opacity">
-        <button type="button">Dislike ( 402 )</button>
+        <button type="button">Dislike ( {{ ac.getDislikes() }} )</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>

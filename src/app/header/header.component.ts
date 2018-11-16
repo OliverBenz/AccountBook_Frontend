@@ -9,7 +9,10 @@ import { AccountService } from '../services/account.service'
 export class HeaderComponent implements OnInit {
   page = {
     title: 'AccountBook',
-    filter: ''
+    welcome: 'Welcome to AccountBook',
+    slogan: 'We barely provide any data and are the worlds smallest account sharing website!',
+    filter: '',
+    searchInput: "hidden"
   }
 
   constructor(
@@ -19,7 +22,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  SendFilter(filter){
-    this.accountService.getAccounts(filter);
+  changeSeachInput(){
+    if(this.page.searchInput == "hidden"){
+      this.page.searchInput = "visible";
+    }
+    else if(this.page.searchInput == "visible"){
+      this.page.searchInput = "hidden";
+
+    }
   }
 }

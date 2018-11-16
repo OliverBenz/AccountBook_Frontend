@@ -1,12 +1,29 @@
 <div id="background">
-  <h1 class="title w3-jumbo">{{ page.title }}</h1>
+    <video autoplay loop muted>
+        <source src="../../assets/videos/Background_1.mp4" type="video/mp4"> 
+    </video>
 
-  <div class="w3-bar w3-large w3-dark-grey">
-    <a routerLink="/index" class="w3-bar-item w3-button">Main Page</a>
-    <a routerLink="/add" class="w3-bar-item w3-button">Add Account</a>
-    <!-- <a routerLink="/main" class="w3-bar-item w3-button">Accountlist</a> -->
-    <!-- <a routerLink="/login" class="w3-bar-item w3-button">Login</a> -->
-    <!-- <a href="https://twitter.com/PaciusTheGreat" class="w3-bar-item w3-button">Twitter</a> -->
-    <input #filter type="text" class="w3-bar-item w3-input w3-dark-grey" placeholder="Search Accounts.." (keyup.enter)="SendFilter(filter.value)">
-  </div>
+    <!-- Header -->
+    <div id="header" class="w3-bar">
+        <h1 class="w3-bar-item">AccountBook</h1>
+        <button class="w3-hover-opacity w3-bar-item" (click)="gotoStartsite()">Home ☰</button>
+    </div>
+
+    <!-- Content -->
+    <div id="content" class="w3-col s12 m6 l6">
+        <h5>{{ page.welcome }}</h5>
+        <h2>{{ page.slogan }}</h2>
+
+        <div id="navigation">
+            <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Account</button>
+            <button class="w3-hover-opacity" (click)="gotoAddsite()">Add Account</button><br>
+        
+            <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div id="footer">
+        <p id="version">Version 3.2</p>
+    </div>
 </div>
