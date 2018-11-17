@@ -1,3 +1,4 @@
+import { LinkService } from './link.service';
 import { Account } from '../classes/account/account';
 
 import { Injectable } from '@angular/core';
@@ -19,16 +20,14 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
-  // --------- Local Testing ---------
-  // url = "http://localhost:8081/api/accounts";
-
-  // --------- Server Testing ---------
-  url = "http://18.185.84.90:8080/api/accounts";
-
+  private url = "";
 
   constructor(
-    private http: HttpClient
-  ) {  }
+    private http: HttpClient,
+    private linkService: LinkService
+  ) {
+    this.url = this.linkService.getAccountLink();
+  }
 
 
   // -----------------------------------------
