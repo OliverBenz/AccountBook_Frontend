@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'AccountBook';
+
+  onActivate(event){
+    window.scroll(0,0);
+  }
 }

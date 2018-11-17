@@ -1,20 +1,24 @@
 #background{
     color: white;
+    /* Hide overflow on top */
+    overflow: hidden;
+    display: block;
+    height: 500px;
 }
 #background video{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     
     position: relative;
-    top: 0;
-    left: 0;
+    /* Align video to bottom */
+    top: 50%;
+    transform: translateY(-50%);
+    
 }
 #header{
-    position: fixed;
+    position: absolute;
     top: 0;
-    left: 0;
 }
-
 #header button{
     background-color: transparent;
     
@@ -26,7 +30,7 @@
     cursor:pointer;
   }
 #content{
-    position: fixed;
+    position: absolute;
     top: 150px;
     padding-left: 20px;
 }
@@ -56,4 +60,9 @@
     background-color: Transparent;
     color: white;
     width: 300px;
+}
+#footer{
+    position: absolute;
+    top: 450px;
+    right: 10px;    
 }

@@ -9,7 +9,6 @@ import { StartSiteComponent } from './start-site/start-site.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'header', component: HeaderComponent },
   { path: 'index', component: IndexComponent },
   { path: 'main', component: MainComponent },
   { path: 'add', component: AddAccountComponent },

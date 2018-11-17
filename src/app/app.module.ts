@@ -9,7 +9,6 @@ import { MainComponent } from './main/main.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
-import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { LoginComponent } from './login/login.component';
 import { StartSiteComponent } from './start-site/start-site.component';
 
@@ -21,7 +20,6 @@ import { StartSiteComponent } from './start-site/start-site.component';
     AddAccountComponent,
     IndexComponent,
     HeaderComponent,
-    SafeHTMLPipe,
     LoginComponent,
     StartSiteComponent
   ],

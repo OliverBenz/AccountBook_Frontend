@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -30,5 +32,21 @@ export class HeaderComponent implements OnInit {
       this.page.searchInput = "hidden";
 
     }
+  }
+  SendFilter(filter){
+    this.page.searchInput = "hidden";
+
+    this.accountService.getAccounts(filter);
+    
+    this.gotoAccountssite();
+  }
+  gotoStartsite(){
+    this.router.navigate(["/index"]);
+  }
+  gotoAddsite(){
+    this.router.navigate(["/add"]);
+  }
+  gotoAccountssite(){
+    this.router.navigate(["/main"]);
   }
 }
