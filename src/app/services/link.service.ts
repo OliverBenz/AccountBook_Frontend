@@ -7,7 +7,7 @@ export class LinkService {
   // Base properties
   private _prefix = "http://";
 
-  private _ip = "18.185.84.90";
+  private _ip = "127.0.0.1";
   private _port = "8080";
 
   private _api = "/api";
