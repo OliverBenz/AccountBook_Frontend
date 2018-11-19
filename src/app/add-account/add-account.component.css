@@ -1,15 +1,38 @@
+h1{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 input{
-  background-color: Transparent;
-  color: black;
-  width: 90%;
+  display: inline;
+  font-size: 16pt;
+}
+.sameLine input{
+  width: 45%;
+  margin-bottom: 40px;
+}
+.sameLine-left{
+  margin-right: 10%;
 }
 button{
+  color: black;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  cursor:pointer;
+  overflow: hidden;
+
   width: 100%;
-  color: white;
+  text-align: center;
+
+  /* Border */
+  border: 1px solid black;
+  border-color: black;
+
+  /* Size */
+  padding-left: 10px;
+  padding-right: 10px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.w3-col{
-  margin-bottom: 20px;
-}
-.w3-row{
-  padding-bottom: 20px;
-}
+

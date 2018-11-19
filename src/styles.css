@@ -1,5 +1,6 @@
 /* Define standard color that might be of use later */
 :root {
+    --white: #FFFFFF;
     --main-grey: #F2F3F3;
     --dark-grey: #C3C3C3;
     --darker-grey: #999898;
@@ -33,7 +34,7 @@ input:focus {
 
 /* Standard background color should not be white */
 body{
-  background-color: var(--main-grey);
+  background-color: var(--white);
 
 }
 body *{
