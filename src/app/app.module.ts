@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { StartSiteComponent } from './start-site/start-site.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { StartSiteComponent } from './start-site/start-site.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

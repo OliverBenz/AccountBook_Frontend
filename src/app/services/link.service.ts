@@ -4,28 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LinkService {
-  // Base properties
-  private _prefix = "http://";
-
-  private _ip = "127.0.0.1";
-  private _port = "8081";
-
-  private _api = "/api";
 
   // Full Link
-  private _link = this._prefix + this._ip + ":" + this._port + this._api;
+  private _link = "http://127.0.0.1/directus/api/1.1/tables";
   
-  // API Selectors
-  private _apiAccounts = this._link + "/accounts";
-  private _apiCustomers = this._link + "/customers";
-  
-
   constructor() { }
 
   getAccountLink(){
-    return this._apiAccounts;
+    return this._link + "/account/rows";
   }
-  getCustomersLink(){
-    return this._apiCustomers;
+  getUserLink(){
+    return this._link + "/user/rows";
   }
 }
