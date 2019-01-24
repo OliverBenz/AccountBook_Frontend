@@ -34,21 +34,13 @@ export class AccountService {
   // -----------------------------------------
   //           Get Accounts
   // -----------------------------------------
-  getAccounts(filter: string){
-    var accountList: Array<Account> = [];
-
+  public getAccounts(filter: string){
     this.http.get<any>(this.url, httpOptions).subscribe(data => {
-      for(let i = 0; i < data.length; i++){
-        var account: Account = new Account(
-          data[i].ID,
-          data[i].website,
-          data[i].username,
-          data[i].password,
-          data[i].date,
-          data[i].info,
-          data[i].likes,
-          data[i].dislikes
-        );
+      var accountList: Array<Account> = [];
+
+      for(let i = 0; i < data.data.length; i++){
+        var account: Account = new Account(data.data[i].id, data.data[i].website, data.data[i].username, data.data[i].password, data.data[i].date, data.data[i].info, data.data[i].likes, data.data[i].dislikes);
+        accountList.push(account);
       }
 
       // --------- Calculate Rating ---------
@@ -59,14 +51,16 @@ export class AccountService {
 
       // --------- Push Accounts ---------
       this.accountSource.next(accountList);
+
+      return accountList;
     });
   }
 
   // -----------------------------------------
   //           Send Accounts
   // -----------------------------------------
-  sendAccounts(account){
-    let body = JSON.parse('{"ID": 0, "website": "' + account.getWebsite() + '", "date": "' + account.getDate() + '", "user": "' + account.getUsername() + '", "password": "' + account.getPassword() + '", "info": "' + account.getInfo() + '", "likes": 0, "dislikes": 0}');
+  public sendAccounts(account){
+    let body = JSON.parse('{"ID": 0, "website": "' + account.getWebsite() + '", "username":"' + account.getUsername() + '", "date": "' + account.getDate() + '", "password": "' + account.getPassword() + '", "info": "' + account.getInfo() + '", "likes": 0, "dislikes": 0}');
     console.log(body);
        // {
     //   "ID": account.getId(),

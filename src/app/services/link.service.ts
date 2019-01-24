@@ -10,10 +10,10 @@ export class LinkService {
   
   constructor() { }
 
-  getAccountLink(){
+  public getAccountLink(){
     return this._link + "/account/rows";
   }
-  getUserLink(){
+  public getUserLink(){
     return this._link + "/user/rows";
   }
 }
