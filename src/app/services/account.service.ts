@@ -9,7 +9,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer XeRXRIHehmB5NgafIyZp7UlmsL38suHk'
   })
 };
 
@@ -36,12 +37,12 @@ export class AccountService {
   getAccounts(filter: string){
     var accountList: Array<Account> = [];
 
-    this.http.get<any>(this.url).subscribe(data => {
+    this.http.get<any>(this.url, httpOptions).subscribe(data => {
       for(let i = 0; i < data.length; i++){
         var account: Account = new Account(
           data[i].ID,
           data[i].website,
-          data[i].user,
+          data[i].username,
           data[i].password,
           data[i].date,
           data[i].info,
