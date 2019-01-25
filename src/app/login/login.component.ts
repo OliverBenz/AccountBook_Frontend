@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   Register(username: string, email:string, password: string){
-    if(username != "" && password != ""){
+    if(username != "" && email != "" && password != ""){
+      // More criteria for register like email format, password length, duplicate username
       this.loginService.register(username, email, password);
     }
   }

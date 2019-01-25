@@ -5,7 +5,6 @@ import { MainComponent } from './main/main.component';
 import { IndexComponent } from './index/index.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { LoginComponent } from './login/login.component';
-import { StartSiteComponent } from './start-site/start-site.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },

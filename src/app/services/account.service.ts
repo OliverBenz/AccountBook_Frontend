@@ -21,26 +21,32 @@ export class AccountService {
   private accountSource = new BehaviorSubject<any>("");
   currentAccounts = this.accountSource.asObservable();
 
-  private url = "";
+  private _url = "";
+  private _filter = ""
 
   constructor(
     private http: HttpClient,
     private linkService: LinkService
   ) {
-    this.url = this.linkService.getAccountLink();
+    this._url = this.linkService.getAccountLink();
   }
 
+  public setFilter(filter){
+    this._filter = filter;
+  }
 
   // -----------------------------------------
   //           Get Accounts
   // -----------------------------------------
-  public getAccounts(filter: string){
-    this.http.get<any>(this.url, httpOptions).subscribe(data => {
+  public getAccounts(){
+    this.http.get<any>(this._url, httpOptions).subscribe(data => {
       var accountList: Array<Account> = [];
 
       for(let i = 0; i < data.data.length; i++){
-        var account: Account = new Account(data.data[i].id, data.data[i].website, data.data[i].username, data.data[i].password, data.data[i].date, data.data[i].info, data.data[i].likes, data.data[i].dislikes);
-        accountList.push(account);
+        if(data.data[i].website.includes(this._filter)){
+          var account: Account = new Account(data.data[i].id, data.data[i].website, data.data[i].username, data.data[i].password, data.data[i].date, data.data[i].info, data.data[i].likes, data.data[i].dislikes);
+          accountList.push(account);
+        }
       }
 
       // --------- Calculate Rating ---------
@@ -61,7 +67,6 @@ export class AccountService {
   // -----------------------------------------
   public sendAccounts(account){
     let body = JSON.parse('{"ID": 0, "website": "' + account.getWebsite() + '", "username":"' + account.getUsername() + '", "date": "' + account.getDate() + '", "password": "' + account.getPassword() + '", "info": "' + account.getInfo() + '", "likes": 0, "dislikes": 0}');
-    console.log(body);
        // {
     //   "ID": account.getId(),
     //   "website": account.getWebsite(),
@@ -74,7 +79,7 @@ export class AccountService {
     // }
 
     // TODO: Error handling
-    this.http.post(this.url, body, httpOptions).subscribe((data: any) => {
+    this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
       console.log(data);
     });
   }

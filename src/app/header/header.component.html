@@ -6,7 +6,8 @@
     <!-- Header -->
     <div id="header" class="w3-bar">
         <h1 class="w3-bar-item">AccountBook</h1>
-        <button class="w3-hover-opacity w3-bar-item" (click)="gotoStartsite()">Home ☰</button>
+        <button class="w3-hover-opacity w3-bar-item" (click)="gotoStartSite()">Home ☰</button>
+        <button class="w3-hover-opacity w3-bar-item" (click)="gotoLoginSite()">Login</button>
     </div>
 
     <!-- Content -->
@@ -16,7 +17,7 @@
 
         <div id="navigation">
             <button class="w3-hover-opacity" (click)="changeSeachInput()">Search Account</button>
-            <button class="w3-hover-opacity" (click)="gotoAddsite()">Add Account</button><br>
+            <button class="w3-hover-opacity" (click)="gotoAddSite()">Add Account</button><br>
         
             <span [style.visibility]="page.searchInput"><input #filter id="filter" type="text" class="w3-input" placeholder="Insert domain name.."(keyup.enter)="SendFilter(filter.value)"></span>
         </div>

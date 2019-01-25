@@ -31,7 +31,7 @@ export class MainComponent implements OnInit, AfterContentInit {
   }
 
   loadAccounts(){
-    this.accountService.getAccounts('');
+    this.accountService.getAccounts();
     console.log(this.accountList);
     this.accountService.currentAccounts.subscribe(accounts => {
       if(accounts){

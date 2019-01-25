@@ -36,17 +36,21 @@ export class HeaderComponent implements OnInit {
   SendFilter(filter){
     this.page.searchInput = "hidden";
 
-    this.accountService.getAccounts(filter);
+    this.accountService.setFilter(filter);
+    this.accountService.getAccounts();
     
-    this.gotoAccountssite();
+    this.gotoAccountsSite();
   }
-  gotoStartsite(){
+  gotoStartSite(){
     this.router.navigate(["/index"]);
   }
-  gotoAddsite(){
+  gotoAddSite(){
     this.router.navigate(["/add"]);
   }
-  gotoAccountssite(){
+  gotoAccountsSite(){
     this.router.navigate(["/main"]);
+  }
+  gotoLoginSite(){
+    this.router.navigate(["/login"]);
   }
 }

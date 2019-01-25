@@ -10,7 +10,6 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { IndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { StartSiteComponent } from './start-site/start-site.component';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -22,8 +21,7 @@ import { CookieService } from 'ngx-cookie-service';
     AddAccountComponent,
     IndexComponent,
     HeaderComponent,
-    LoginComponent,
-    StartSiteComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

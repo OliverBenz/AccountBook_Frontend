@@ -3,7 +3,11 @@ import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LinkService } from './link.service';
-// import * as bcrypt from 'bcryptjs';
+
+// https://www.npmjs.com/package/js-sha256
+import { sha256, sha224 } from 'js-sha256';
+// https://www.npmjs.com/package/bcrypt
+import * as bcrypt from 'bcryptjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -42,18 +46,32 @@ export class LoginService {
   //           Register
   // -----------------------------------------
   public register(username: string, email: string, password: string){
-    let sessionId = this.generateSessionId();
-    let passwordEnc = "123";
+    let sessionId = this.generateSessionId(username + email);
 
-    let body = JSON.parse('{"id": "0", "email": "' + email + '", "username": "' + username + '", "password": "' + passwordEnc + '", "sessionid": "' + sessionId + '"}');
+    let salt = bcrypt.genSaltSync(12);
+    let passwordEnc = bcrypt.hashSync(password, salt);
+    
+
+    let body = JSON.parse('{"email": "' + email + '", "username": "' + username + '", "password": "' + passwordEnc + '", "sessionid": "' + sessionId + '"}');
 
     this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
     });
   }
 
-  private generateSessionId(){
+  private generateSessionId(val){
+    let cut = Math.round(val.length / 4);
+    
+    let string1 = val.slice(0, cut);
+    let string2 = val.slice(3 * cut, val.length);
+    
+    let temp = sha256(string1 + string2);
 
-    return "sldkfjlsdnflLKJDFKRFJN";
+    for(let i = Math.floor(Math.random() * 200) + 56; i >= 0; i--){
+      let a = Math.floor(Math.random() * 256) + 1;
+      temp = temp.slice(0, a) + temp.slice(a + 1);
+    }
+
+    return sha256(temp);
   }
 }
