@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer XeRXRIHehmB5NgafIyZp7UlmsL38suHk'
+    'Authorization': 'Bearer FZNeFDquC8po5GLdghCEe76LPf4zAh44'
   })
 };
 

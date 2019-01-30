@@ -1,14 +1,8 @@
 <div class="w3-col s1 m3 l3"><p></p></div>
 
-<div class="w3-padding w3-col s10 m6 l6 w3-animate-opacity">
-  <h2><b>{{ page.how.title }}</b></h2>
-  <p>{{ page.how.content }}</p>
-  <br>
-  <h2><b>{{ page.remove.title }}</b></h2>
-  <p>{{ page.remove.content }}</p>
-  <br>
-  <h2><b>{{ page.twitter.title }}</b></h2>
-  <p>{{ page.twitter.content }}</p>
+<div class="w3-padding w3-col s10 m6 l6 w3-animate-opacity" *ngFor="let content of contentList" >
+  <h2><b>{{ content.title }}</b></h2>
+  <p>{{ content.content }}</p>
 </div>
 
 <div class="w3-col s1 m3 l3"><p></p></div>

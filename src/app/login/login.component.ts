@@ -1,5 +1,5 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +16,29 @@ export class LoginComponent implements OnInit {
   }
 
   Login(username: string, password: string){
-   if(username != "" && password != ""){
-     this.loginService.login(username, password);
-   }
+    if(username == ""){
+      alert("Please insert a username");
+    }
+    else if(password == ""){
+      alert("Please insert a password");
+    }
+    else{
+      this.loginService.login(username, password);
+    }
   }
 
   Register(username: string, email:string, password: string){
-    if(username != "" && email != "" && password != ""){
-      // More criteria for register like email format, password length, duplicate username
-      this.loginService.register(username, email, password);
+    if(username == ""){
+      alert("Please insert a username");
+    }
+    else if(! email.includes("@") || ! email.includes(".")){
+      alert("Invalid Email");
+    }
+    else if(password.length < 7){
+      alert("Password not long enough");
+    }
+    else{
+      this.loginService.register(username, email, password)
     }
   }
 }

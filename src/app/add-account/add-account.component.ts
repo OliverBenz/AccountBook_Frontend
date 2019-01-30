@@ -43,8 +43,7 @@ export class AddAccountComponent implements OnInit {
       var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'}; 
       var date = new Date().toLocaleString('de-AU', dateOptions);
       // TODO: Months with only one number: Add 0 in front
-      console.log(date);
-
+      
       let account: Account = new Account(0, website, username, password, date, info, 0, 0);
       
       this.accountHistory.push(account);

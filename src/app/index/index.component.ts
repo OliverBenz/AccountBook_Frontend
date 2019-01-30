@@ -1,4 +1,7 @@
+import { ContentService } from './../services/content.service';
 import { Component, OnInit } from '@angular/core';
+
+import { Content } from '../classes/content';
 
 @Component({
   selector: 'app-index',
@@ -6,23 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  page = {
-    how: {
-      title: 'How it works',
-      content: 'Anyone can add an account. The user can rate every search result based on if it worked or not. Strongly negative information will be removed.'
-    },
-    remove: {
-      title: 'Removing an Account',
-      content: 'You done goofed. It is not possible to remove an account so be careful to what information you provide'
-    },
-    twitter: {
-      title: 'Twitter',
-      content: 'If you spot bugs/problems on the site, please report them to out twitter account.'
-    }
-  }
-  constructor() { }
+  public contentList: Array<Content> = [];
+
+  constructor(
+    private contentService: ContentService
+  ) { }
 
   ngOnInit() {
+    let c = new Content("...", "...", -1);
+    this.contentList.push(c);
+
+    this.contentService.getIndex();
+    this.contentService.indexContent.subscribe(content => {
+      if(content){
+        this.contentList = content;
+      }
+    });
   }
 
 }

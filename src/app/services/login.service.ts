@@ -12,7 +12,7 @@ import * as bcrypt from 'bcryptjs';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer XeRXRIHehmB5NgafIyZp7UlmsL38suHk'
+    'Authorization': 'Bearer FZNeFDquC8po5GLdghCEe76LPf4zAh44'
   })
 };
 
@@ -22,6 +22,7 @@ const httpOptions = {
 export class LoginService {
 
   private _url = "";
+  private saltCount = 12;
 
   constructor(
     private http: HttpClient,
@@ -36,10 +37,15 @@ export class LoginService {
   //           Login
   // -----------------------------------------
   public login(username: string, password: string){
-  
-
-    let sessionId = ""; // Get form API
-    this.authService.storeUser(sessionId);
+    this.http.get(this._url + "?filters[username][eq]=" + username, httpOptions).subscribe((data: any) => {
+      if(bcrypt.compare(password, data.password)){
+        this.authService.storeUser(data.data[0].sessionid);
+        alert("Login successful");
+        // TODO: Navigate to Account Page
+      }
+    }, (error: any) => {
+      console.log(error);
+    });
   }
 
   // -----------------------------------------
@@ -48,14 +54,15 @@ export class LoginService {
   public register(username: string, email: string, password: string){
     let sessionId = this.generateSessionId(username + email);
 
-    let salt = bcrypt.genSaltSync(12);
+    let salt = bcrypt.genSaltSync(this.saltCount);
     let passwordEnc = bcrypt.hashSync(password, salt);
-    
 
     let body = JSON.parse('{"email": "' + email + '", "username": "' + username + '", "password": "' + passwordEnc + '", "sessionid": "' + sessionId + '"}');
 
     this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
-      // console.log(data);
+      alert("Successfully registered");
+    }, (error: any) =>{
+      alert(error.error.error.message)
     });
   }
 

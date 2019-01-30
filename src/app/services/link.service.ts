@@ -16,4 +16,7 @@ export class LinkService {
   public getUserLink(){
     return this._link + "/user/rows";
   }
+  public getContent(){
+    return this._link + "/content/rows";
+  }
 }
