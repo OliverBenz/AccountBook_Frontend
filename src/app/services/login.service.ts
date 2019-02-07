@@ -1,3 +1,4 @@
+import { User } from './../classes/user/user';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +23,7 @@ const httpOptions = {
 export class LoginService {
 
   private _url = "";
-  private saltCount = 12;
+  private saltCount = 15;
 
   constructor(
     private http: HttpClient,
@@ -38,10 +39,19 @@ export class LoginService {
   // -----------------------------------------
   public login(username: string, password: string){
     this.http.get(this._url + "?filters[username][eq]=" + username, httpOptions).subscribe((data: any) => {
-      if(bcrypt.compare(password, data.password)){
-        this.authService.storeUser(data.data[0].sessionid);
-        alert("Login successful");
-        // TODO: Navigate to Account Page
+      // TODO: Fix compare: Not working properly
+      if(data.data.length == 0){
+        alert("Login failed: Not user with this email");
+      }
+      else{
+        console.log(data);
+        if(!bcrypt.compareSync(password, data.data[0].password)){
+          alert("Login failed: Wrong password");
+        }
+        else{
+          alert("Login successful");
+          this.authService.storeUser(data.data[0].sessionid);
+        }
       }
     }, (error: any) => {
       console.log(error);
@@ -51,19 +61,14 @@ export class LoginService {
   // -----------------------------------------
   //           Register
   // -----------------------------------------
-  public register(username: string, email: string, password: string){
-    let sessionId = this.generateSessionId(username + email);
+  public register(user: User){
+    user.setSessionId(this.generateSessionId(user.getUsername().concat(user.getEmail())));
 
-    let salt = bcrypt.genSaltSync(this.saltCount);
-    let passwordEnc = bcrypt.hashSync(password, salt);
-
-    let body = JSON.parse('{"email": "' + email + '", "username": "' + username + '", "password": "' + passwordEnc + '", "sessionid": "' + sessionId + '"}');
-
-    this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
-      alert("Successfully registered");
-    }, (error: any) =>{
-      alert(error.error.error.message)
-    });
+    let hash = bcrypt.hashSync(user.getPassword(), 8);
+    console.log(user.getPassword());
+    console.log(hash);
+    user.setPassword(hash);
+    this.postUser(user);
   }
 
   private generateSessionId(val){
@@ -80,5 +85,14 @@ export class LoginService {
     }
 
     return sha256(temp);
+  }
+
+  private postUser(user: User){
+    let body = JSON.parse('{"email": "' + user.getEmail() + '", "username": "' + user.getUsername() + '", "password": "' + user.getPassword() + '", "sessionid": "' + user.getSessionId() + '"}');
+    this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
+      alert("Successfully registered");
+    }, (error: any) =>{
+      alert(error.error.error.message);
+    });
   }
 }

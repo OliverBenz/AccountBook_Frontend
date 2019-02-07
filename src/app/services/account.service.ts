@@ -79,9 +79,7 @@ export class AccountService {
     // }
 
     // TODO: Error handling
-    this.http.post(this._url, body, httpOptions).subscribe((data: any) => {
-      console.log(data);
-    });
+    this.http.post(this._url, body, httpOptions).subscribe((data: any) => {});
   }
 
   // -----------------------------------------

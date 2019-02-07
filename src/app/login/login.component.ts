@@ -1,3 +1,4 @@
+import { User } from './../classes/user/user';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
       alert("Password not long enough");
     }
     else{
-      this.loginService.register(username, email, password)
+      let user = new User(email, username, password);
+      this.loginService.register(user)
     }
   }
 }

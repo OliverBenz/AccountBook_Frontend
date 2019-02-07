@@ -30,15 +30,26 @@ export class MainComponent implements OnInit, AfterContentInit {
     this.loadAccounts();
   }
 
-  loadAccounts(){
+  private loadAccounts(){
     this.accountService.getAccounts();
-    console.log(this.accountList);
     this.accountService.currentAccounts.subscribe(accounts => {
       if(accounts){
         this.accountList = accounts;
-        console.log(accounts);
       }
       // TODO: If accounts.length = 0
     });
+  }
+
+  public addLike(id: number){
+    // TODO: Add List of likes to cookies and check if activated
+    // TODO: Remove dislike if exists
+    alert(id);
+  }
+
+  public addDislike(id: number){
+    // TODO: Add List of dislikes to cookies and check if activated
+    // TODO: Remove like if exists
+
+    alert(id);
   }
 }

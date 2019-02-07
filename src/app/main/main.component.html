@@ -15,10 +15,10 @@
     <div id="rating" class="w3-container w3-footer">
       <h5><b>Rating: </b>{{ ac.getRating() }} %</h5>
       <div class="w3-col s6 m6 l6 w3-hover-opacity">
-        <button type="button">Like ( {{ ac.getLikes() }} )</button>
+        <button type="button" (click)="addLike(ac.getId())">Like ( {{ ac.getLikes() }} )</button>
       </div>
       <div class="w3-col s6 m6 l6 w3-hover-opacity">
-        <button type="button">Dislike ( {{ ac.getDislikes() }} )</button>
+        <button type="button" (click)="addDislike(ac.getId())">Dislike ( {{ ac.getDislikes() }} )</button>
       </div>
     </div>
   </div>
