@@ -37,7 +37,9 @@
     float: right;
     cursor: pointer;
   }
-
+#navigation{
+    margin-top: 20px;
+}
 #navigation button {
     color: white;
     background-color: Transparent;
@@ -87,12 +89,12 @@
         margin-bottom: 30px;
     }
     #content{
-        padding-right: 40px;
+        padding-right: 50px;
     }
     #content h5{
         font-size: 12pt;
     }
     #content h2{
-        font-size: 15pt;
+        font-size: 16pt;
     }
 }
