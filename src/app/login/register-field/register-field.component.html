@@ -1,0 +1,15 @@
+<form id="regForm" class="w3-container w3-padding">
+  <label class="w3-text-teal"><b>Username</b></label>
+  <input #username class="w3-input" (keyup.enter)="Register(username.value, email.value, password.value)" type="text">
+  <br>
+
+  <label class="w3-text-teal"><b>Email</b></label>
+  <input #email class="w3-input" (keyup.enter)="Register(username.value, email.value, password.value)" type="email">
+  <br>
+
+  <label class="w3-text-teal"><b>Password</b></label>
+  <input #password class="w3-input" (keyup.enter)="Register(username.value, email.value, password.value)" type="password">
+  <br>
+
+  <button type="button" class="w3-btn darker-grey" (click)="Register(username.value, email.value, password.value)">Register</button>
+</form>

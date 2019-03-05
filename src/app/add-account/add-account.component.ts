@@ -42,10 +42,7 @@ export class AddAccountComponent implements OnInit {
     }
   }
 
-  public clearInput(){
-    (<HTMLInputElement>document.getElementById('username')).value = "";
-    (<HTMLInputElement>document.getElementById('password')).value = "";
-    (<HTMLInputElement>document.getElementById('website')).value = "";
-    (<HTMLInputElement>document.getElementById('other')).value = "";
+  private clearInput(){
+    (<HTMLFormElement>document.getElementById('addForm')).reset();
   }
 }

@@ -1,34 +1,11 @@
 <div class="w3-col s6 m6 l6">
   <h1 class="title">Login</h1>
 
-  <form class="w3-container w3-padding">
-    <label class="w3-text-teal"><b>Username</b></label>
-    <input #loginUsername class="w3-input" (keyup.enter)="Login(loginUsername.value, loginPassword.value)" type="text">
-    <br>
-
-    <label class="w3-text-teal"><b>Password</b></label>
-    <input #loginPassword class="w3-input" (keyup.enter)="Login(loginUsername.value, loginPassword.value)" type="password">
-    <br>
-
-    <button type="button" class="w3-btn darker-grey" (click)="Login(loginUsername.value, loginPassword.value)">Login</button>
-  </form>
+  <app-login-field></app-login-field>
 </div>
+
 <div class="w3-col s6 m6 l6">
   <h1 class="title">Register</h1>
 
-  <form class="w3-container w3-padding">
-    <label class="w3-text-teal"><b>Username</b></label>
-    <input #regUsername class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="text">
-    <br>
-
-    <label class="w3-text-teal"><b>Email</b></label>
-    <input #regEmail class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="email">
-    <br>
-
-    <label class="w3-text-teal"><b>Password</b></label>
-    <input #regPassword class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="password">
-    <br>
-
-    <button type="button" class="w3-btn darker-grey" (click)="Register(regUsername.value, regEmail.value, regPassword.value)">Register</button>
-  </form>
+  <app-register-field></app-register-field>
 </div>

@@ -3,15 +3,16 @@
 
 <div class="w3-col s10 m8 l8">
   <h1>Add Account</h1>
-  
-  <div class="sameLine">
-    <input id="username" #username class="w3-input sameLine-left" type="text" placeholder="Username">
-    <input id="password" #password class="w3-input" type="text" placeholder="Password">
-  </div>
-  <div class="sameLine">
-    <input id="website" #website class="w3-input sameLine-left" type="text" placeholder="Website">
-    <input id="other" #other class="w3-input" type="text" placeholder="Other">
-  </div>
+  <form id="addForm">
+    <div class="sameLine">
+      <input id="username" #username class="w3-input sameLine-left" type="text" placeholder="Username">
+      <input id="password" #password class="w3-input" type="text" placeholder="Password">
+    </div>
+    <div class="sameLine">
+      <input id="website" #website class="w3-input sameLine-left" type="text" placeholder="Website">
+      <input id="other" #other class="w3-input" type="text" placeholder="Other">
+    </div>
+  </form>
 
   <button class="w3-hover-opacity" (click)="SendAccount(username.value, password.value, website.value, other.value)"><b>Submit</b></button>
 </div>
