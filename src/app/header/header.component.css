@@ -1,4 +1,9 @@
 #background{
+    /* background: url("../../assets/images/headerBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: auto; */
+    background-size: auto 500px;
+    
     color: white;
     /* Hide overflow on top */
     overflow: hidden;
@@ -9,17 +14,18 @@
 }
 #background video{
     width: 100%;
-    /* height: 100%; */
-    
     position: relative;
-    /* Align video to bottom */
     top: 50%;
     transform: translateY(-50%);
-    
 }
 #header{
     position: absolute;
     top: 0;
+}
+#content{
+    position: absolute;
+    top: 150px;
+    padding-left: 80px;
 }
 #header button{
     background-color: transparent;
@@ -31,16 +37,11 @@
     float: right;
     cursor: pointer;
   }
-#content{
-    position: absolute;
-    top: 150px;
-    padding-left: 80px;
-}
+
 #navigation button {
     color: white;
     background-color: Transparent;
-    background-repeat:no-repeat;
-
+    
     cursor:pointer;
     overflow: hidden;
   
@@ -68,4 +69,14 @@
     position: absolute;
     top: 450px;
     right: 10px;    
+}
+@media only screen and (max-width: 700px){
+    #background video{
+        width: auto;
+        height: 500px;
+        /* transform: translateX(-20%); */
+    }
+    #content{
+        padding-left: 30px;
+    }
 }

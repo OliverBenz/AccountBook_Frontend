@@ -7,7 +7,7 @@
     <br>
 
     <label class="w3-text-teal"><b>Password</b></label>
-    <input #loginPassword class="w3-input" (keyup.enter)="Login(loginUsername.value, loginPassword.value)" type="text">
+    <input #loginPassword class="w3-input" (keyup.enter)="Login(loginUsername.value, loginPassword.value)" type="password">
     <br>
 
     <button type="button" class="w3-btn darker-grey" (click)="Login(loginUsername.value, loginPassword.value)">Login</button>
@@ -22,11 +22,11 @@
     <br>
 
     <label class="w3-text-teal"><b>Email</b></label>
-    <input #regEmail class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="text">
+    <input #regEmail class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="email">
     <br>
 
     <label class="w3-text-teal"><b>Password</b></label>
-    <input #regPassword class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="text">
+    <input #regPassword class="w3-input" (keyup.enter)="Register(regUsername.value, regEmail.value, regPassword.value)" type="password">
     <br>
 
     <button type="button" class="w3-btn darker-grey" (click)="Register(regUsername.value, regEmail.value, regPassword.value)">Register</button>
