@@ -70,6 +70,7 @@
     top: 450px;
     right: 10px;    
 }
+/* --- Responsive Features --- */
 @media only screen and (max-width: 700px){
     #background video{
         width: auto;
@@ -78,5 +79,20 @@
     }
     #content{
         padding-left: 30px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #header{
+        margin-bottom: 30px;
+    }
+    #content{
+        padding-right: 40px;
+    }
+    #content h5{
+        font-size: 12pt;
+    }
+    #content h2{
+        font-size: 15pt;
     }
 }
