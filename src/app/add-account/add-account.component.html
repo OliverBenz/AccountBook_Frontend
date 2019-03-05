@@ -5,12 +5,12 @@
   <h1>Add Account</h1>
   
   <div class="sameLine">
-    <input #username class="w3-input sameLine-left" type="text" placeholder="Username">
-    <input #password class="w3-input" type="text" placeholder="Password">
+    <input id="username" #username class="w3-input sameLine-left" type="text" placeholder="Username">
+    <input id="password" #password class="w3-input" type="text" placeholder="Password">
   </div>
   <div class="sameLine">
-    <input #website class="w3-input sameLine-left" type="text" placeholder="Website">
-    <input #other class="w3-input" type="text" placeholder="Other">
+    <input id="website" #website class="w3-input sameLine-left" type="text" placeholder="Website">
+    <input id="other" #other class="w3-input" type="text" placeholder="Other">
   </div>
 
   <button class="w3-hover-opacity" (click)="SendAccount(username.value, password.value, website.value, other.value)"><b>Submit</b></button>

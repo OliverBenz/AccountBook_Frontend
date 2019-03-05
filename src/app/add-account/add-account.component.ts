@@ -10,8 +10,6 @@ import { AccountService } from '../services/account.service';
 })
 export class AddAccountComponent implements OnInit {
 
-  accountHistory: Array<Account> = [];
-
   constructor(
     private accountService: AccountService
   ) {
@@ -22,7 +20,7 @@ export class AddAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  SendAccount(username: string, password: string, website: string, info: string){
+  public SendAccount(username: string, password: string, website: string, info: string){
     var error = false;
 
     // Check if empty
@@ -30,14 +28,6 @@ export class AddAccountComponent implements OnInit {
       error = true;
     }
   	
-    // Check if already added
-    for (let i = 0; i < this.accountHistory.length; i++){
-      // If account already posted - error
-      if(this.accountHistory[i].getUsername() == username && this.accountHistory[i].getPassword() == password && this.accountHistory[i].getWebsite() == website){
-        error = true;
-      }
-    }
-
     if(error == false){
       // Make account object and push to history
       var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'}; 
@@ -46,8 +36,16 @@ export class AddAccountComponent implements OnInit {
       
       let account: Account = new Account(0, website, username, password, date, info, 0, 0);
       
-      this.accountHistory.push(account);
       this.accountService.sendAccounts(account);
+
+      this.clearInput();
     }
+  }
+
+  public clearInput(){
+    (<HTMLInputElement>document.getElementById('username')).value = "";
+    (<HTMLInputElement>document.getElementById('password')).value = "";
+    (<HTMLInputElement>document.getElementById('website')).value = "";
+    (<HTMLInputElement>document.getElementById('other')).value = "";
   }
 }

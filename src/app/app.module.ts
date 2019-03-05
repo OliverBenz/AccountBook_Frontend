@@ -29,7 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule
   ],
   providers: [
-    CookieService
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
