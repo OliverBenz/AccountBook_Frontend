@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LinkService } from './link.service';
+import { Router } from '@angular/router';
 
 // https://www.npmjs.com/package/js-sha256
 import { sha256, sha224 } from 'js-sha256';
@@ -25,7 +26,8 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private linkService: LinkService
+    private linkService: LinkService,
+    private router: Router
   ) {
     this._url = this.linkService.getUserLink();
     httpOptions.headers = this.linkService.getHeader();
@@ -49,6 +51,7 @@ export class LoginService {
         else{
           alert("Login successful");
           this.authService.storeUser(data.data[0].sessionid);
+          this.router.navigate(["/account"]);
           location.reload();
         }
       }
