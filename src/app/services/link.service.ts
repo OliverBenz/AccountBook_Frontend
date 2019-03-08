@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer yOk9jwWos2yhOA7sMjPz4xRwLuEVPgPH'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +18,10 @@ export class LinkService {
   private _link = "http://165.227.172.44/directus/api/1.1/tables";
   
   constructor() { }
+
+  public getHeader(){
+    return httpOptions.headers;
+  }
 
   public getAccountLink(){
     return this._link + "/acc_accounts/rows";

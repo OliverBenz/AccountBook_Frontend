@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { ContentService } from './../services/content.service';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../services/account.service'
@@ -14,12 +15,17 @@ export class HeaderComponent implements OnInit {
     welcome: '..',
     slogan: '..',
     searchInput: "hidden"
-  }
+  };
+  buttons = {
+    login: true,
+    account: false
+  };
 
   constructor(
     private accountService: AccountService,
     public router: Router,
-    public contentService: ContentService
+    public contentService: ContentService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -30,6 +36,16 @@ export class HeaderComponent implements OnInit {
         this.page.slogan = content[0].getContent();
       }
     });
+
+    // Check if logged in & change buttons
+    if(this.authService.checkUser()){
+      this.buttons.login = false;
+      this.buttons.account = true;
+    }
+    else{
+      this.buttons.login = true;
+      this.buttons.account = false;
+    }
   }
 
   changeSeachInput(){
@@ -47,7 +63,7 @@ export class HeaderComponent implements OnInit {
     this.accountService.setFilter(filter);
     this.accountService.getAccounts();
     
-    this.gotoAccountsSite();
+    this.gotoMainSite();
   }
   gotoStartSite(){
     this.router.navigate(["/index"]);
@@ -55,8 +71,11 @@ export class HeaderComponent implements OnInit {
   gotoAddSite(){
     this.router.navigate(["/add"]);
   }
-  gotoAccountsSite(){
+  gotoMainSite(){
     this.router.navigate(["/main"]);
+  }
+  gotoAccountSite(){
+    this.router.navigate(["/account"]);
   }
   gotoLoginSite(){
     this.router.navigate(["/login"]);

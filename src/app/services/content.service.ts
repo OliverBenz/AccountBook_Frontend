@@ -9,10 +9,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Content } from '../classes/content';
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer yOk9jwWos2yhOA7sMjPz4xRwLuEVPgPH'
-  })
+  headers: new HttpHeaders({}),
 };
 
 @Injectable({
@@ -28,10 +25,11 @@ export class ContentService {
   headerContent = this.headerSource.asObservable();
 
   constructor(
-    private linksService: LinkService,
+    private linkService: LinkService,
     private http: HttpClient
   ) {
-    this._url = this.linksService.getContent();
+    this._url = this.linkService.getContent();
+    httpOptions.headers = this.linkService.getHeader();
   }
 
   public getIndex(){

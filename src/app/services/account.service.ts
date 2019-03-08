@@ -8,10 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer yOk9jwWos2yhOA7sMjPz4xRwLuEVPgPH'
-  })
+  headers: new HttpHeaders({}),
 };
 
 @Injectable({
@@ -29,6 +26,7 @@ export class AccountService {
     private linkService: LinkService
   ) {
     this._url = this.linkService.getAccountLink();
+    httpOptions.headers = this.linkService.getHeader();
   }
 
   public setFilter(filter){

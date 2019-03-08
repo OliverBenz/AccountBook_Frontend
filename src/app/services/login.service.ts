@@ -11,10 +11,7 @@ import { sha256, sha224 } from 'js-sha256';
 import * as bcrypt from 'bcryptjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer yOk9jwWos2yhOA7sMjPz4xRwLuEVPgPH'
-  })
+  headers: new HttpHeaders({ }),
 };
 
 @Injectable({
@@ -28,9 +25,10 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private linksService: LinkService
+    private linkService: LinkService
   ) {
-    this._url = this.linksService.getUserLink();
+    this._url = this.linkService.getUserLink();
+    httpOptions.headers = this.linkService.getHeader();
   }
 
 
@@ -41,7 +39,7 @@ export class LoginService {
     this.http.get(this._url + "?filters[username][eq]=" + username, httpOptions).subscribe((data: any) => {
       // TODO: Fix compare: Not working properly
       if(data.data.length == 0){
-        alert("Login failed: Not user with this email");
+        alert("Login failed: Not user with this username");
       }
       else{
         console.log(data);
@@ -51,6 +49,7 @@ export class LoginService {
         else{
           alert("Login successful");
           this.authService.storeUser(data.data[0].sessionid);
+          location.reload();
         }
       }
     }, (error: any) => {
