@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginFieldComponent } from './login/login-field/login-field.component';
 import { RegisterFieldComponent } from './login/register-field/register-field.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegisterFieldComponent } from './login/register-field/register-field.co
     HeaderComponent,
     LoginComponent,
     LoginFieldComponent,
-    RegisterFieldComponent
+    RegisterFieldComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
