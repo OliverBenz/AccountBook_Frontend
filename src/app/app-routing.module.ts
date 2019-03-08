@@ -1,3 +1,4 @@
+import { AccountComponent } from './account/account.component';
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'add', component: AddAccountComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'account', component: AccountComponent },
   { path: '**', redirectTo: "index", pathMatch: "full"}
 ];
 
