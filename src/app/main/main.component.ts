@@ -10,20 +10,20 @@ import { AccountService } from '../services/account.service';
 })
 export class MainComponent implements OnInit, AfterContentInit {
   accountList: Array<Account> = []; 
+  show = {
+    accounts: true,
+    error: false
+  }
 
   constructor(
     private accountService: AccountService
   ) { }
 
   ngOnInit() {
-    var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var date = new Date().toLocaleString('de-AU', dateOptions);
-
-    var aList: Array<Account> = [];
+    var date = this.getDate();
     var account: Account = new Account(-1, "Loading.. ", "Loading.. ", "Loading.. ", date, "Loading.. ", 0, 0);
-    aList.push(account);
 
-    this.accountList = aList;
+    this.accountList.push(account);
   }
 
   ngAfterContentInit(){
@@ -35,8 +35,20 @@ export class MainComponent implements OnInit, AfterContentInit {
     this.accountService.currentAccounts.subscribe(accounts => {
       if(accounts){
         this.accountList = accounts;
+
+        if(accounts.length > 0){
+          this.show.accounts = true;
+          this.show.error = false;
+        }
+        else if(accounts.length == 0){
+          var account: Account = new Account(-1, "Placeholder", "Placeholder", "Placeholder", date, "Placeholder", 0, 0);
+          var date = this.getDate();
+          this.accountList.push(account);
+
+          this.show.accounts = false;
+          this.show.error = true;
+        }
       }
-      // TODO: If accounts.length = 0
     });
   }
 
@@ -51,5 +63,10 @@ export class MainComponent implements OnInit, AfterContentInit {
     // TODO: Remove like if exists
 
     alert(id);
+  }
+
+  private getDate(){
+    var dateOptions = {day: 'numeric', month: 'numeric', year: 'numeric'};
+    return new Date().toLocaleString('de-AU', dateOptions);
   }
 }

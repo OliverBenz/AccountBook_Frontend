@@ -37,14 +37,15 @@ export class AccountService {
   //           Get Accounts
   // -----------------------------------------
   public getAccounts(){
-    this.http.get<any>(this._url, httpOptions).subscribe(data => {
+    // TODO: filter accounts in api call so we don't get 1000 accounts
+    // TODO: contains value
+    const urlNew = this._url + "?filters[website][like]=" + this._filter;
+    this.http.get<any>(urlNew, httpOptions).subscribe(data => {
       var accountList: Array<Account> = [];
-
+      
       for(let i = 0; i < data.data.length; i++){
-        if(data.data[i].website.includes(this._filter)){
-          var account: Account = new Account(data.data[i].id, data.data[i].website, data.data[i].username, data.data[i].password, data.data[i].date, data.data[i].info, data.data[i].likes, data.data[i].dislikes);
-          accountList.push(account);
-        }
+        var account: Account = new Account(data.data[i].id, data.data[i].website, data.data[i].username, data.data[i].password, data.data[i].date, data.data[i].info, data.data[i].likes, data.data[i].dislikes);
+        accountList.push(account);
       }
 
       // --------- Calculate Rating ---------
