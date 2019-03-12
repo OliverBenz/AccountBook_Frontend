@@ -55,14 +55,20 @@ export class MainComponent implements OnInit, AfterContentInit {
     this.accountService.updateAccounts(this.getAccount(id), true);
     // TODO: Add List of likes to cookies and check if activated
     // TODO: Remove dislike if exists
+
+    // Reload Accounts
+    this.loadAccounts();
   }
 
   public addDislike(id: number){
     this.accountService.updateAccounts(this.getAccount(id), false);
     // TODO: Add List of dislikes to cookies and check if activated
     // TODO: Remove like if exists
+
+    // Reload Accounts
+    this.loadAccounts();
   }
-  
+
   private getAccount(id){
     let acc: Account;
     for(let i = 0; i < this.accountList.length; i++){

@@ -97,7 +97,6 @@ export class AccountService {
     
     this.http.put(this._url + "/" + acc.getId(), body, httpOptions).subscribe(data => {
       console.log(data);
-      location.reload();
     }, error =>{
       console.log(error);
     })
