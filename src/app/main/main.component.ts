@@ -52,16 +52,25 @@ export class MainComponent implements OnInit, AfterContentInit {
   }
 
   public addLike(id: number){
+    this.accountService.updateAccounts(this.getAccount(id), true);
     // TODO: Add List of likes to cookies and check if activated
     // TODO: Remove dislike if exists
-    alert(id);
   }
 
   public addDislike(id: number){
+    this.accountService.updateAccounts(this.getAccount(id), false);
     // TODO: Add List of dislikes to cookies and check if activated
     // TODO: Remove like if exists
-
-    alert(id);
+  }
+  
+  private getAccount(id){
+    let acc: Account;
+    for(let i = 0; i < this.accountList.length; i++){
+      if (this.accountList[i].getId() == id){
+        acc = this.accountList[i];
+      }
+    }
+    return acc;
   }
 
   private getDate(){
