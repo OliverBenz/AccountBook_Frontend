@@ -34,11 +34,10 @@ export class MainComponent implements OnInit, AfterContentInit {
     this.accountService.getAccounts();
     this.accountService.currentAccounts.subscribe(accounts => {
       if(accounts){
-        this.accountList = accounts;
-
         if(accounts.length > 0){
           this.show.accounts = true;
           this.show.error = false;
+          this.accountList = accounts;
         }
         else if(accounts.length == 0){
           var account: Account = new Account(-1, "Placeholder", "Placeholder", "Placeholder", date, "Placeholder", 0, 0);
