@@ -18,5 +18,5 @@ export class AuthService {
   }
   public getUser(){
     return this.cookieService.get('sessionId');
-  }
+  } 
 }

@@ -19,7 +19,9 @@ export class AccountService {
   currentAccounts = this.accountSource.asObservable();
 
   private _url = "";
-  private _filter = ""
+  private _filter = "";
+
+  private _limit = 50;
 
   constructor(
     private http: HttpClient,
@@ -31,6 +33,7 @@ export class AccountService {
 
   public setFilter(filter){
     this._filter = filter;
+    this.getAccounts()
   }
 
   // -----------------------------------------
@@ -39,7 +42,13 @@ export class AccountService {
   public getAccounts(){
     // TODO: filter accounts in api call so we don't get 1000 accounts
     // TODO: contains value
-    const urlNew = this._url + "?filters[website][like]=" + this._filter;
+    let urlNew = this._url + "?filters[website][like]=" + this._filter;
+    // urlNew += "&offset=" + (page * this._limit);
+    
+    if(this._filter == ""){
+      urlNew += "&limit=" + this._limit;  
+    }
+
     this.http.get<any>(urlNew, httpOptions).subscribe(data => {
       var accountList: Array<Account> = [];
       
@@ -56,8 +65,6 @@ export class AccountService {
 
       // --------- Push Accounts ---------
       this.accountSource.next(accountList);
-
-      return accountList;
     });
   }
 

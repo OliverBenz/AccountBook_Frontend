@@ -9,8 +9,8 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, AfterContentInit {
-  accountList: Array<Account> = []; 
-  show = {
+  public accountList: Array<Account> = []; 
+  public show = {
     accounts: true,
     error: false
   }

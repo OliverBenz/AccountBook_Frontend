@@ -59,9 +59,7 @@ export class HeaderComponent implements OnInit {
   }
   SendFilter(filter){
     this.page.searchInput = "hidden";
-
     this.accountService.setFilter(filter);
-    this.accountService.getAccounts();
     
     this.gotoMainSite();
   }
