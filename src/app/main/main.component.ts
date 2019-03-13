@@ -39,34 +39,27 @@ export class MainComponent implements OnInit, AfterContentInit {
           this.show.error = false;
           this.accountList = accounts;
         }
-        else if(accounts.length == 0){
-          var account: Account = new Account(-1, "Placeholder", "Placeholder", "Placeholder", date, "Placeholder", 0, 0);
-          var date = this.getDate();
-          this.accountList.push(account);
-
-          this.show.accounts = false;
-          this.show.error = true;
-        }
       }
     });
   }
 
   public addLike(id: number){
-    this.accountService.updateAccounts(this.getAccount(id), true);
+    // Increase Likes from selected Account
+    var acc: Account = this.getAccount(id);
+    acc.incLikes();
+    this.accountService.updateAccounts(acc);
     // TODO: Add List of likes to cookies and check if activated
     // TODO: Remove dislike if exists
-
-    // Reload Accounts
-    this.loadAccounts();
   }
 
   public addDislike(id: number){
-    this.accountService.updateAccounts(this.getAccount(id), false);
+    // Increase Dislikes from selected Account
+    var acc: Account = this.getAccount(id);
+    acc.incDislikes();
+
+    this.accountService.updateAccounts(acc);
     // TODO: Add List of dislikes to cookies and check if activated
     // TODO: Remove like if exists
-
-    // Reload Accounts
-    this.loadAccounts();
   }
 
   private getAccount(id){

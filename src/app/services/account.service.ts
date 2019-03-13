@@ -84,16 +84,8 @@ export class AccountService {
   // -----------------------------------------
   //           Update Accounts
   // -----------------------------------------
-  public updateAccounts(acc: Account, type){
-    let body;
-    if(type){
-      // Like
-      body = JSON.parse('{"ID": ' + acc.getId() + ', "website": "' + acc.getWebsite() + '", "username":"' + acc.getUsername() + '", "date": "' + acc.getDate() + '", "password": "' + acc.getPassword() + '", "info": "' + acc.getInfo() + '", "likes": ' + (acc.getLikes() + 1) + ', "dislikes": ' + acc.getDislikes() + '}');
-    }
-    else{
-      // Dislike
-      body = JSON.parse('{"ID": ' + acc.getId() + ', "website": "' + acc.getWebsite() + '", "username":"' + acc.getUsername() + '", "date": "' + acc.getDate() + '", "password": "' + acc.getPassword() + '", "info": "' + acc.getInfo() + '", "likes": ' + acc.getLikes() + ', "dislikes": ' + (acc.getDislikes() + 1) + '}');
-    }
+  public updateAccounts(acc: Account){
+    let body = JSON.parse('{"ID": ' + acc.getId() + ', "website": "' + acc.getWebsite() + '", "username":"' + acc.getUsername() + '", "date": "' + acc.getDate() + '", "password": "' + acc.getPassword() + '", "info": "' + acc.getInfo() + '", "likes": ' + acc.getLikes() + ', "dislikes": ' + acc.getDislikes() + '}');
     
     this.http.put(this._url + "/" + acc.getId(), body, httpOptions).subscribe(data => {
       console.log(data);

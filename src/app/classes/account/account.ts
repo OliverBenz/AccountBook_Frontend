@@ -81,4 +81,11 @@ export class Account{
     setRating(rating: number){
         this.rating = rating;
     }
+
+    incLikes(){
+        this.likes += 1;
+    }
+    incDislikes(){
+        this.dislikes += 1;
+    }
 }
